@@ -12,7 +12,7 @@
             <div class="col-md-6 col-lg-4">
                 <div class="card border-0 shadow-sm h-100">
                     <div class="position-relative">
-                        <img src="{{ asset('storage/' . $gallery->image) }}" class="card-img-top" alt="{{ $gallery->title }}" style="height: 200px; object-fit: cover;">
+                        <img src="{{ $gallery->image_source }}" class="card-img-top" alt="{{ $gallery->title }}" style="height: 200px; object-fit: cover;">
                         <div class="position-absolute top-0 end-0 p-2">
                             <form method="POST" action="{{ route('admin.gallery.destroy', $gallery) }}" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus gambar ini?')">
                                 @csrf

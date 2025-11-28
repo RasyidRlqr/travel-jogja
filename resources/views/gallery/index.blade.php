@@ -13,13 +13,7 @@
             @forelse($galleries as $gallery)
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="card border-0 shadow-sm card-hover">
-                        @if($gallery->image)
-                            <img src="{{ asset('storage/' . $gallery->image) }}" class="card-img-top" alt="{{ $gallery->title ?? 'Gallery' }}" style="height: 200px; object-fit: cover;">
-                        @else
-                            <div class="bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
-                                <i class="bi bi-image text-muted" style="font-size: 2rem;"></i>
-                            </div>
-                        @endif
+                        <img src="{{ $gallery->image_source }}" class="card-img-top" alt="{{ $gallery->title ?? 'Gallery' }}" style="height: 200px; object-fit: cover;">
                         @if($gallery->title)
                             <div class="card-body p-3">
                                 <h6 class="card-title mb-0 text-center">{{ $gallery->title }}</h6>
