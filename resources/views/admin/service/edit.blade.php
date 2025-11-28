@@ -46,17 +46,47 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="image" class="form-label">Gambar Layanan</label>
-                            <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" accept="image/*">
-                            @error('image')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                            <div class="form-text">Format: JPG, PNG, GIF. Maksimal 2MB. Biarkan kosong jika tidak ingin mengubah gambar.</div>
-                            @if($service->image)
-                                <div class="mt-2">
-                                    <img src="{{ asset('storage/' . $service->image) }}" alt="Current Image" class="img-thumbnail" style="max-width: 200px;">
+                            <label class="form-label">Gambar Layanan</label>
+                            <div class="mb-3">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="image_type" id="image_type_upload" value="upload" {{ !$service->image_url ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="image_type_upload">
+                                        Upload File
+                                    </label>
                                 </div>
-                            @endif
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="image_type" id="image_type_url" value="url" {{ $service->image_url ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="image_type_url">
+                                        URL Gambar (ImgURL, dll)
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div id="upload_section" style="{{ $service->image_url ? 'display: none;' : '' }}">
+                                <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" accept="image/*">
+                                @error('image')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                                <div class="form-text">Format: JPG, PNG, GIF. Maksimal 2MB. Biarkan kosong jika tidak ingin mengubah gambar.</div>
+                                @if($service->image_source && !$service->image_url)
+                                    <div class="mt-2">
+                                        <img src="{{ $service->image_source }}" alt="Current image" class="img-thumbnail" style="max-width: 200px;">
+                                    </div>
+                                @endif
+                            </div>
+
+                            <div id="url_section" style="{{ !$service->image_url ? 'display: none;' : '' }}">
+                                <input type="url" class="form-control @error('image_url') is-invalid @enderror" id="image_url" name="image_url" value="{{ old('image_url', $service->image_url) }}" placeholder="https://i.imgur.com/... atau URL gambar lainnya">
+                                @error('image_url')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                                <div class="form-text">Masukkan URL gambar dari ImgURL, Imgur, atau hosting gambar lainnya</div>
+                                @if($service->image_source && $service->image_url)
+                                    <div class="mt-2">
+                                        <img src="{{ $service->image_source }}" alt="Current image" class="img-thumbnail" style="max-width: 200px;">
+                                    </div>
+                                @endif
+                            </div>
                         </div>
 
                         <div class="d-flex gap-2">
@@ -83,6 +113,26 @@
                 .replace(/-+/g, '-')
                 .trim('-');
             document.getElementById('slug').value = slug;
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const uploadRadio = document.getElementById('image_type_upload');
+            const urlRadio = document.getElementById('image_type_url');
+            const uploadSection = document.getElementById('upload_section');
+            const urlSection = document.getElementById('url_section');
+
+            function toggleImageInput() {
+                if (uploadRadio.checked) {
+                    uploadSection.style.display = 'block';
+                    urlSection.style.display = 'none';
+                } else {
+                    uploadSection.style.display = 'none';
+                    urlSection.style.display = 'block';
+                }
+            }
+
+            uploadRadio.addEventListener('change', toggleImageInput);
+            urlRadio.addEventListener('change', toggleImageInput);
         });
     </script>
 

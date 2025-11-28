@@ -32,6 +32,7 @@ class TourController extends Controller
             'includes' => 'nullable|string',
             'excludes' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image_url' => 'nullable|url',
         ]);
 
         $imagePath = null;
@@ -49,6 +50,7 @@ class TourController extends Controller
             'includes' => $validated['includes'] ?? '',
             'excludes' => $validated['excludes'] ?? '',
             'image' => $imagePath,
+            'image_url' => $validated['image_url'] ?? null,
         ]);
 
         return redirect()->route('admin.tour.index')->with('success', 'Paket wisata berhasil ditambahkan!');
@@ -71,6 +73,7 @@ class TourController extends Controller
             'includes' => 'nullable|string',
             'excludes' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image_url' => 'nullable|url',
         ]);
 
         $imagePath = $tour->image;
@@ -88,6 +91,7 @@ class TourController extends Controller
             'includes' => $validated['includes'] ?? '',
             'excludes' => $validated['excludes'] ?? '',
             'image' => $imagePath,
+            'image_url' => $validated['image_url'] ?? null,
         ]);
 
         return redirect()->route('admin.tour.index')->with('success', 'Paket wisata berhasil diperbarui!');

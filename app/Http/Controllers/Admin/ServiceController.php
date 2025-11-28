@@ -28,6 +28,7 @@ class ServiceController extends Controller
             'description' => 'required|string',
             'icon' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image_url' => 'nullable|url',
         ]);
 
         $imagePath = null;
@@ -41,6 +42,7 @@ class ServiceController extends Controller
             'description' => $validated['description'],
             'icon' => $validated['icon'] ?? '',
             'image' => $imagePath,
+            'image_url' => $validated['image_url'] ?? null,
         ]);
 
         return redirect()->route('admin.service.index')->with('success', 'Layanan berhasil ditambahkan!');
@@ -59,6 +61,7 @@ class ServiceController extends Controller
             'description' => 'required|string',
             'icon' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image_url' => 'nullable|url',
         ]);
 
         $imagePath = $service->image;
@@ -72,6 +75,7 @@ class ServiceController extends Controller
             'description' => $validated['description'],
             'icon' => $validated['icon'] ?? '',
             'image' => $imagePath,
+            'image_url' => $validated['image_url'] ?? null,
         ]);
 
         return redirect()->route('admin.service.index')->with('success', 'Layanan berhasil diperbarui!');
