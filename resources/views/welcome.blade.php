@@ -377,7 +377,7 @@
                 <div class="col-lg-4">
                     <div class="glass-card p-0 h-100 card-hover overflow-hidden">
                         <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=400&h=250&fit=crop"
+                            <img src="{{ asset('images/borobudur.jpg') }}"
                                  class="w-100" alt="Borobudur" style="height: 200px; object-fit: cover;">
                             <div class="position-absolute top-0 end-0 m-3">
                                 <span class="badge bg-primary px-3 py-2">
@@ -410,7 +410,7 @@
                 <div class="col-lg-4">
                     <div class="glass-card p-0 h-100 card-hover overflow-hidden">
                         <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=250&fit=crop"
+                            <img src="{{ asset('images/prambanan.jpg') }}"
                                  class="w-100" alt="Prambanan" style="height: 200px; object-fit: cover;">
                             <div class="position-absolute top-0 end-0 m-3">
                                 <span class="badge bg-primary px-3 py-2">
@@ -443,7 +443,7 @@
                 <div class="col-lg-4">
                     <div class="glass-card p-0 h-100 card-hover overflow-hidden">
                         <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?w=400&h=250&fit=crop"
+                            <img src="{{ asset('images/malioboro.jpg') }}"
                                  class="w-100" alt="Malioboro" style="height: 200px; object-fit: cover;">
                             <div class="position-absolute top-0 end-0 m-3">
                                 <span class="badge bg-primary px-3 py-2">
@@ -770,17 +770,17 @@
                         <div class="col-6">
                             <ul class="list-unstyled">
                                 <li class="mb-2">
-                                            <a href="/#services" class="text-muted text-decoration-none hover-white">
+                                            <a href="/#services" class="text-white text-decoration-none hover-primary">
                                                 <i class="bi bi-chevron-right me-1 small"></i>Layanan
                                             </a>
                                         </li>
                                         <li class="mb-2">
-                                            <a href="/#tours" class="text-muted text-decoration-none hover-white">
+                                            <a href="/#tours" class="text-white text-decoration-none hover-primary">
                                                 <i class="bi bi-chevron-right me-1 small"></i>Paket Wisata
                                             </a>
                                         </li>
                                         <li class="mb-2">
-                                            <a href="/#gallery" class="text-muted text-decoration-none hover-white">
+                                            <a href="/#gallery" class="text-white text-decoration-none hover-primary">
                                                 <i class="bi bi-chevron-right me-1 small"></i>Galeri
                                             </a>
                                         </li>
@@ -789,17 +789,17 @@
                         <div class="col-6">
                             <ul class="list-unstyled">
                                 <li class="mb-2">
-                                    <a href="{{ route('blog') }}" class="text-muted text-decoration-none hover-white">
+                                    <a href="{{ route('blog') }}" class="text-white text-decoration-none hover-primary">
                                         <i class="bi bi-chevron-right me-1 small"></i>Blog
                                     </a>
                                 </li>
                                 <li class="mb-2">
-                                    <a href="#contact" class="text-muted text-decoration-none hover-white">
+                                    <a href="#contact" class="text-white text-decoration-none hover-primary">
                                         <i class="bi bi-chevron-right me-1 small"></i>Kontak
                                     </a>
                                 </li>
                                 <li class="mb-2">
-                                    <a href="{{ route('login') }}" class="text-muted text-decoration-none hover-white">
+                                    <a href="{{ route('login') }}" class="text-white text-decoration-none hover-primary">
                                         <i class="bi bi-chevron-right me-1 small"></i>Login
                                     </a>
                                 </li>

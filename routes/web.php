@@ -25,23 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Test Route for Image URL
-Route::get('/test-image-url', function () {
-    return view('test-image-url');
-});
 
-// Demo Image URL functionality without database
-Route::get('/demo-image-url', function () {
-    // Simulate blog data with image URL
-    $demoBlog = (object) [
-        'title' => 'Demo: Gambar dari URL Imgur',
-        'content' => 'Ini adalah demo untuk menunjukkan bahwa fitur image URL sudah berfungsi dengan baik. Gambar di bawah ini dimuat langsung dari URL external.',
-        'created_at' => now(),
-        'image_source' => 'https://i.imgur.com/GYPpzEe.jpeg'
-    ];
-
-    return view('demo-image-url', compact('demoBlog'));
-});
 
 // Admin Routes
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
