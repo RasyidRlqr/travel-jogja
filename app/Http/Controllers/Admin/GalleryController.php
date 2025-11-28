@@ -25,16 +25,26 @@ class GalleryController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'category' => 'nullable|string|max:100',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image_url' => 'nullable|url',
         ]);
 
-        $imagePath = $request->file('image')->store('gallery', 'public');
+        // Ensure either image file or image_url is provided
+        if (!$request->hasFile('image') && !$request->filled('image_url')) {
+            return back()->withErrors(['image' => 'Gambar wajib diisi. Upload file gambar atau masukkan URL gambar.'])->withInput();
+        }
+
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('gallery', 'public');
+        }
 
         Gallery::create([
             'title' => $validated['title'],
             'description' => $validated['description'] ?? '',
             'category' => $validated['category'] ?? '',
             'image' => $imagePath,
+            'image_url' => $validated['image_url'] ?? null,
         ]);
 
         return redirect()->route('admin.gallery.index')->with('success', 'Foto berhasil ditambahkan!');
