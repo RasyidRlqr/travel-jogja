@@ -43,7 +43,7 @@ class GalleryController extends Controller
             'title' => $validated['title'],
             'description' => $validated['description'] ?? '',
             'category' => $validated['category'] ?? '',
-            'image' => $imagePath,
+            'image' => $imagePath ?? '',
             'image_url' => $validated['image_url'] ?? null,
         ]);
 
