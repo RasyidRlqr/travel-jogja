@@ -11,6 +11,9 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -91,26 +94,13 @@
             transition: all 0.3s ease;
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            background-color: rgba(0,0,0,0.7) !important;
-        }
-
-        .gallery-item:hover .gallery-icon {
-            opacity: 1 !important;
-            transform: scale(1);
-        }
-
         .gallery-overlay {
-            transition: all 0.3s ease;
+            background-color: rgba(0,0,0,0.5);
         }
 
         .gallery-icon {
-            transition: all 0.3s ease;
-            transform: scale(0.8);
+            opacity: 1;
+            transform: scale(1);
         }
 
         .btn-modern {
@@ -400,9 +390,9 @@
                                     <small class="badge bg-success-subtle text-success">Tersedia</small>
                                 </div>
                             </div>
-                            <button class="btn btn-primary w-100 btn-modern">
+                            <a href="#contact" class="btn btn-primary w-100 btn-modern text-decoration-none">
                                 <i class="bi bi-cart-plus me-2"></i>Pesan Sekarang
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -433,9 +423,9 @@
                                     <small class="badge bg-success-subtle text-success">Tersedia</small>
                                 </div>
                             </div>
-                            <button class="btn btn-primary w-100 btn-modern">
+                            <a href="#contact" class="btn btn-primary w-100 btn-modern text-decoration-none">
                                 <i class="bi bi-cart-plus me-2"></i>Pesan Sekarang
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -466,9 +456,9 @@
                                     <small class="badge bg-success-subtle text-success">Tersedia</small>
                                 </div>
                             </div>
-                            <button class="btn btn-primary w-100 btn-modern">
+                            <a href="#contact" class="btn btn-primary w-100 btn-modern text-decoration-none">
                                 <i class="bi bi-cart-plus me-2"></i>Pesan Sekarang
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -499,9 +489,10 @@
                 <div class="col-md-4">
                     <div class="gallery-item position-relative overflow-hidden rounded-4">
                         <img src="https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?w=400&h=300&fit=crop"
-                             class="w-100 h-100 object-fit-cover" alt="Borobudur Sunrise">
-                        <div class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 bg-dark d-flex align-items-center justify-content-center">
-                            <i class="gallery-icon bi bi-eye text-white fs-2"></i>
+                              class="w-100" alt="Borobudur Sunrise" style="height: 200px; object-fit: cover;">
+                        <div class="p-3 bg-white">
+                            <h6 class="fw-bold text-dark mb-2">Borobudur Sunrise</h6>
+                            <p class="text-muted small mb-0">Nikmati keindahan matahari terbit di candi Borobudur yang megah.</p>
                         </div>
                     </div>
                 </div>
@@ -509,9 +500,10 @@
                 <div class="col-md-4">
                     <div class="gallery-item position-relative overflow-hidden rounded-4">
                         <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=400&h=300&fit=crop"
-                             class="w-100 h-100 object-fit-cover" alt="Borobudur Temple">
-                        <div class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 bg-dark d-flex align-items-center justify-content-center">
-                            <i class="gallery-icon bi bi-eye text-white fs-2"></i>
+                              class="w-100" alt="Borobudur Temple" style="height: 200px; object-fit: cover;">
+                        <div class="p-3 bg-white">
+                            <h6 class="fw-bold text-dark mb-2">Borobudur Temple</h6>
+                            <p class="text-muted small mb-0">Eksplorasi arsitektur Buddha terbesar di dunia.</p>
                         </div>
                     </div>
                 </div>
@@ -519,9 +511,10 @@
                 <div class="col-md-4">
                     <div class="gallery-item position-relative overflow-hidden rounded-4">
                         <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
-                             class="w-100 h-100 object-fit-cover" alt="Prambanan Temple">
-                        <div class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 bg-dark d-flex align-items-center justify-content-center">
-                            <i class="gallery-icon bi bi-eye text-white fs-2"></i>
+                              class="w-100" alt="Prambanan Temple" style="height: 200px; object-fit: cover;">
+                        <div class="p-3 bg-white">
+                            <h6 class="fw-bold text-dark mb-2">Prambanan Temple</h6>
+                            <p class="text-muted small mb-0">Kompleks candi Hindu terbesar di Indonesia.</p>
                         </div>
                     </div>
                 </div>
@@ -529,9 +522,10 @@
                 <div class="col-md-4">
                     <div class="gallery-item position-relative overflow-hidden rounded-4">
                         <img src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?w=400&h=300&fit=crop"
-                             class="w-100 h-100 object-fit-cover" alt="Malioboro Street">
-                        <div class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 bg-dark d-flex align-items-center justify-content-center">
-                            <i class="gallery-icon bi bi-eye text-white fs-2"></i>
+                              class="w-100" alt="Malioboro Street" style="height: 200px; object-fit: cover;">
+                        <div class="p-3 bg-white">
+                            <h6 class="fw-bold text-dark mb-2">Malioboro Street</h6>
+                            <p class="text-muted small mb-0">Jalan utama Yogyakarta dengan suasana tradisional.</p>
                         </div>
                     </div>
                 </div>
@@ -539,9 +533,10 @@
                 <div class="col-md-4">
                     <div class="gallery-item position-relative overflow-hidden rounded-4">
                         <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=400&h=300&fit=crop"
-                             class="w-100 h-100 object-fit-cover" alt="Cultural Dance">
-                        <div class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 bg-dark d-flex align-items-center justify-content-center">
-                            <i class="gallery-icon bi bi-eye text-white fs-2"></i>
+                              class="w-100" alt="Cultural Dance" style="height: 200px; object-fit: cover;">
+                        <div class="p-3 bg-white">
+                            <h6 class="fw-bold text-dark mb-2">Cultural Dance</h6>
+                            <p class="text-muted small mb-0">Tarian tradisional yang memukau dari budaya Jawa.</p>
                         </div>
                     </div>
                 </div>
@@ -549,9 +544,10 @@
                 <div class="col-md-4">
                     <div class="gallery-item position-relative overflow-hidden rounded-4">
                         <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
-                             class="w-100 h-100 object-fit-cover" alt="Traditional Food">
-                        <div class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 bg-dark d-flex align-items-center justify-content-center">
-                            <i class="gallery-icon bi bi-eye text-white fs-2"></i>
+                              class="w-100" alt="Traditional Food" style="height: 200px; object-fit: cover;">
+                        <div class="p-3 bg-white">
+                            <h6 class="fw-bold text-dark mb-2">Traditional Food</h6>
+                            <p class="text-muted small mb-0">Kuliner khas Yogyakarta yang lezat dan autentik.</p>
                         </div>
                     </div>
                 </div>
@@ -662,7 +658,7 @@
                         </div>
                         <h5 class="fw-bold mb-2">Telepon</h5>
                         <p class="text-muted mb-0">+62 274 123456</p>
-                        <small class="text-muted">24/7 Support</small>
+                        <small class="text-white-50">24/7 Support</small>
                     </div>
                 </div>
 
@@ -676,7 +672,7 @@
                         </div>
                         <h5 class="fw-bold mb-2">WhatsApp</h5>
                         <p class="text-muted mb-0">+62 812 3456 7890</p>
-                        <small class="text-muted">Respon Cepat</small>
+                        <small class="text-white-50">Respon Cepat</small>
                     </div>
                 </div>
 
@@ -690,7 +686,7 @@
                         </div>
                         <h5 class="fw-bold mb-2">Email</h5>
                         <p class="text-muted mb-0">info@traveljogja.com</p>
-                        <small class="text-muted">Respon dalam 24 jam</small>
+                        <small class="text-white-50">Respon dalam 24 jam</small>
                     </div>
                 </div>
             </div>
@@ -712,21 +708,21 @@
                             <small class="text-primary">Professional Tour</small>
                         </div>
                     </div>
-                    <p class="mb-4 text-muted">
+                    <p class="mb-4 text">
                         Agen wisata terpercaya di Yogyakarta yang berkomitmen memberikan pengalaman wisata terbaik
                         dengan pelayanan profesional dan harga terjangkau.
                     </p>
                     <div class="d-flex gap-3">
-                        <a href="#" class="text-white fs-5 hover-primary">
+                        <a href="https://www.facebook.com/travel-jogja" class="text-white fs-5 hover-primary">
                             <i class="bi bi-facebook"></i>
                         </a>
-                        <a href="#" class="text-white fs-5 hover-primary">
+                        <a href="https://www.instagram.com/travel-jogja" class="text-white fs-5 hover-primary">
                             <i class="bi bi-instagram"></i>
                         </a>
-                        <a href="#" class="text-white fs-5 hover-primary">
+                        <a href="https://x.com/travel-jogja" class="text-white fs-5 hover-primary">
                             <i class="bi bi-twitter"></i>
                         </a>
-                        <a href="#" class="text-white fs-5 hover-primary">
+                        <a href="https://wa.me/62812345678?text=halo+ka" class="text-white fs-5 hover-primary">
                             <i class="bi bi-whatsapp"></i>
                         </a>
                     </div>
@@ -738,28 +734,28 @@
                         <i class="bi bi-geo-alt text-primary me-3 mt-1"></i>
                         <div>
                             <div class="fw-semibold">Alamat</div>
-                            <small class="text-muted">Jl. Malioboro No. 123, Yogyakarta</small>
+                            <small class="text-white-50">Jl. Malioboro No. 123, Yogyakarta</small>
                         </div>
                     </div>
                     <div class="d-flex align-items-start mb-3">
                         <i class="bi bi-telephone text-primary me-3 mt-1"></i>
                         <div>
                             <div class="fw-semibold">Telepon</div>
-                            <small class="text-muted">+62 274 123456</small>
+                            <small class="text-white-50">+62 274 123456</small>
                         </div>
                     </div>
                     <div class="d-flex align-items-start mb-3">
                         <i class="bi bi-envelope text-primary me-3 mt-1"></i>
                         <div>
                             <div class="fw-semibold">Email</div>
-                            <small class="text-muted">info@traveljogja.com</small>
+                            <small class="text-white-50">info@traveljogja.com</small>
                         </div>
                     </div>
                     <div class="d-flex align-items-start">
                         <i class="bi bi-clock text-primary me-3 mt-1"></i>
                         <div>
                             <div class="fw-semibold">Jam Operasional</div>
-                            <small class="text-muted">08:00 - 20:00 WIB</small>
+                            <small class="text-white-50">08:00 - 20:00 WIB</small>
                         </div>
                     </div>
                 </div>
@@ -813,12 +809,12 @@
 
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="mb-0 text-muted small">
+                    <p class="mb-0 text-white-50 small">
                         &copy; 2024 Travel Jogja. All rights reserved.
                     </p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <small class="text-muted">
+                    <small class="text-white-50">
                         Made with <i class="bi bi-heart-fill text-danger me-1"></i> for Yogyakarta
                     </small>
                 </div>
