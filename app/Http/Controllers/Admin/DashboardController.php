@@ -21,7 +21,11 @@ class DashboardController extends Controller
             'galleries' => Gallery::count(),
             'users' => \App\Models\User::count(),
             'total_views' => \App\Models\PageView::count(),
-            'today_views' => \App\Models\PageView::whereDate('created_at', today())->count(),
+            'today_views' => \App\Models\PageView::getViewsLastDay(),
+            'week_views' => \App\Models\PageView::getViewsLastWeek(),
+            'month_views' => \App\Models\PageView::getViewsLastMonth(),
+            'five_month_views' => \App\Models\PageView::getViewsLast5Months(),
+            'year_views' => \App\Models\PageView::getViewsLastYear(),
         ];
 
         // Chart data - last 7 days visits
