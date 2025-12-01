@@ -41,11 +41,13 @@
                                 <i class="bi bi-house-door me-2"></i>Dashboard
                             </a>
                         </li>
+                        @if(auth()->user()->isAdmin())
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('admin.user.*') ? 'active' : '' }}" href="{{ route('admin.user.index') }}">
                                 <i class="bi bi-people me-2"></i>User Management
                             </a>
                         </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('admin.blog.*') ? 'active' : '' }}" href="{{ route('admin.blog.index') }}">
                                 <i class="bi bi-pencil-square me-2"></i>Blog
@@ -67,7 +69,7 @@
                             </a>
                         </li>
                         <li class="nav-item mt-4">
-                            <a class="nav-link text-danger" href="{{ route('dashboard') }}">
+                            <a class="nav-link text-danger" href="{{ route('home') }}">
                                 <i class="bi bi-arrow-left me-2"></i>Kembali ke Website
                             </a>
                         </li>
