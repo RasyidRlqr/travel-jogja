@@ -40,4 +40,41 @@ class PageView extends Model
             ->limit($limit)
             ->get();
     }
+
+    public static function getViewsLastDays($days)
+    {
+        return static::where('created_at', '>=', now()->subDays($days))->count();
+    }
+
+    public static function getUniqueViewsLastDays($days)
+    {
+        return static::where('created_at', '>=', now()->subDays($days))
+            ->distinct('ip_address')
+            ->count('ip_address');
+    }
+
+    public static function getViewsLastDay()
+    {
+        return static::getViewsLastDays(1);
+    }
+
+    public static function getViewsLastWeek()
+    {
+        return static::getViewsLastDays(7);
+    }
+
+    public static function getViewsLastMonth()
+    {
+        return static::getViewsLastDays(30);
+    }
+
+    public static function getViewsLast5Months()
+    {
+        return static::getViewsLastDays(150);
+    }
+
+    public static function getViewsLastYear()
+    {
+        return static::getViewsLastDays(365);
+    }
 }

@@ -17,10 +17,10 @@ class TrackPageView
         if ($request->isMethod('get') && !$request->is('admin/*')) {
             $page = $request->path() ?: 'home';
 
-            // Simple rate limiting - don't track the same IP for the same page within 1 hour
+            // Track unique IPs per day - don't track the same IP for the same page within the same day
             $existingView = PageView::where('page', $page)
                 ->where('ip_address', $request->ip())
-                ->where('created_at', '>', now()->subHour())
+                ->whereDate('created_at', today())
                 ->exists();
 
             if (!$existingView) {
