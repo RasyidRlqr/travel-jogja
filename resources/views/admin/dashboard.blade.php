@@ -200,6 +200,30 @@
         .dropdown-menu {
             z-index: 1050;
         }
+
+        .dropdown,
+        .dropdown-menu {
+            position: relative;
+            z-index: 9999 !important;
+        }
+
+        .stats-card .dropdown {
+            position: static !important;
+        }
+
+        .stats-card .dropdown-menu {
+            position: absolute !important;
+            z-index: 9999 !important;
+            margin-top: 0.5rem;
+        }
+
+        .mobile-overlay {
+            display: none !important;
+            pointer-events: none !important;
+            background: transparent !important;
+            width: 0 !important;
+            height: 0 !important;
+        }
     </style>
 </head>
 <body>
