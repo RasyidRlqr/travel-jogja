@@ -31,6 +31,7 @@
                             <label for="role" class="form-label">Role <span class="text-danger">*</span></label>
                             <select class="form-select @error('role') is-invalid @enderror" id="role" name="role" required>
                                 <option value="user" {{ old('role', $user->role) === 'user' ? 'selected' : '' }}>User</option>
+                                <option value="sub_admin" {{ old('role', $user->role) === 'sub_admin' ? 'selected' : '' }}>Sub Admin</option>
                                 <option value="admin" {{ old('role', $user->role) === 'admin' ? 'selected' : '' }}>Admin</option>
                             </select>
                             @error('role')
@@ -40,7 +41,7 @@
 
                         <div class="mb-3">
                             <div class="form-text">
-                                <strong>Info:</strong> User dengan role Admin dapat mengakses panel admin dan mengelola website.
+                                <strong>Info:</strong> Admin dapat mengelola semua fitur termasuk user. Sub Admin dapat mengakses dashboard tapi tidak bisa edit user.
                             </div>
                         </div>
 

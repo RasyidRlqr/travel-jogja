@@ -37,9 +37,13 @@
                                 </td>
                                 <td>{{ $user->email }}</td>
                                 <td>
-                                    <span class="badge {{ $user->role === 'admin' ? 'bg-danger' : 'bg-secondary' }}">
-                                        {{ $user->role === 'admin' ? 'Admin' : 'User' }}
-                                    </span>
+                                    @if($user->role === 'admin')
+                                        <span class="badge bg-danger">Admin</span>
+                                    @elseif($user->role === 'sub_admin')
+                                        <span class="badge bg-warning text-dark">Sub Admin</span>
+                                    @else
+                                        <span class="badge bg-secondary">User</span>
+                                    @endif
                                 </td>
                                 <td>{{ $user->created_at->format('d M Y') }}</td>
                                 <td>

@@ -55,7 +55,7 @@
             <!-- Auth Links -->
             <ul class="navbar-nav">
                 @auth
-                    @if(auth()->user()->hasRole('admin'))
+                    @if(auth()->user()->isAdminLevel())
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle fw-semibold text-dark" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-shield-check me-1 text-primary"></i>Admin Panel
@@ -64,6 +64,11 @@
                                 <li><a class="dropdown-item py-2" href="{{ route('admin.dashboard') }}">
                                     <i class="bi bi-speedometer2 me-2"></i>Dashboard
                                 </a></li>
+                                @if(auth()->user()->isAdmin())
+                                <li><a class="dropdown-item py-2" href="{{ route('admin.user.index') }}">
+                                    <i class="bi bi-people me-2"></i>Kelola User
+                                </a></li>
+                                @endif
                                 <li><a class="dropdown-item py-2" href="{{ route('admin.blog.index') }}">
                                     <i class="bi bi-pencil-square me-2"></i>Kelola Blog
                                 </a></li>

@@ -61,4 +61,20 @@ class User extends Authenticatable
     {
         return $this->hasRole('admin');
     }
+
+    /**
+     * Check if user is sub admin
+     */
+    public function isSubAdmin()
+    {
+        return $this->hasRole('sub_admin');
+    }
+
+    /**
+     * Check if user has admin level access (admin or sub_admin)
+     */
+    public function isAdminLevel()
+    {
+        return $this->isAdmin() || $this->isSubAdmin();
+    }
 }
