@@ -1,4 +1,4 @@
-<x-guest-layout title="Masuk">
+<x-guest-layout title="Masuk" >
     <!-- Session Status -->
     @if (session('status'))
         <div class="alert alert-success mb-4">
@@ -6,11 +6,11 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('login') }}" >
         @csrf
 
         <!-- Email Address -->
-        <div class="mb-4">
+        <div class="mb-4" >
             <div class="form-floating">
                 <input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror"
                        name="email" :value="old('email')" required autofocus autocomplete="username"
@@ -26,13 +26,16 @@
 
         <!-- Password -->
         <div class="mb-4">
-            <div class="form-floating">
+            <div class="form-floating position-relative">
                 <input id="password" type="password" class="form-control form-control-lg @error('password') is-invalid @enderror"
-                       name="password" required autocomplete="current-password"
-                       placeholder="Password">
+                        name="password" required autocomplete="current-password"
+                        placeholder="Password">
                 <label for="password">
                     <i class="bi bi-lock me-2"></i>Password
                 </label>
+                <button type="button" class="btn btn-outline-secondary btn-sm position-absolute top-50 end-0 translate-middle-y me-2" id="togglePassword">
+                    <i class="bi bi-eye" id="passwordIcon"></i>
+                </button>
             </div>
             @error('password')
                 <div class="invalid-feedback">{{ $message }}</div>
