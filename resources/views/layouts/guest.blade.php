@@ -136,6 +136,53 @@
         </div>
     </section>
 
+    <!-- Password Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Password toggle for login/register
+            const togglePassword = document.getElementById('togglePassword');
+            const passwordInput = document.getElementById('password');
+            const passwordIcon = document.getElementById('passwordIcon');
+
+            if (togglePassword && passwordInput && passwordIcon) {
+                togglePassword.addEventListener('click', function() {
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+
+                    // Toggle icon
+                    if (type === 'password') {
+                        passwordIcon.classList.remove('bi-eye-slash');
+                        passwordIcon.classList.add('bi-eye');
+                    } else {
+                        passwordIcon.classList.remove('bi-eye');
+                        passwordIcon.classList.add('bi-eye-slash');
+                    }
+                });
+            }
+
+            // Password confirmation toggle for register
+            const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+            const confirmPasswordInput = document.getElementById('password_confirmation');
+            const confirmPasswordIcon = document.getElementById('confirmPasswordIcon');
+
+            if (toggleConfirmPassword && confirmPasswordInput && confirmPasswordIcon) {
+                toggleConfirmPassword.addEventListener('click', function() {
+                    const type = confirmPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    confirmPasswordInput.setAttribute('type', type);
+
+                    // Toggle icon
+                    if (type === 'password') {
+                        confirmPasswordIcon.classList.remove('bi-eye-slash');
+                        confirmPasswordIcon.classList.add('bi-eye');
+                    } else {
+                        confirmPasswordIcon.classList.remove('bi-eye');
+                        confirmPasswordIcon.classList.add('bi-eye-slash');
+                    }
+                });
+            }
+        });
+    </script>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
