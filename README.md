@@ -1,70 +1,223 @@
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Travel Jogja
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Website wisata Yogyakarta yang dibangun dengan Laravel 11. Platform lengkap untuk mengelola paket wisata, galeri, blog, dan sistem manajemen pengguna.
 
-## About Laravel
+## 🚀 Fitur Utama
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Homepage Modern**: Desain responsif dengan hero section, layanan, paket wisata, galeri, dan kontak
+- **Sistem Manajemen Admin**: Dashboard untuk mengelola konten website
+- **Multi-level User Roles**: Admin, Sub Admin, dan User biasa
+- **Paket Wisata**: Sistem manajemen paket wisata lengkap
+- **Galeri Foto**: Koleksi foto destinasi wisata
+- **Blog System**: Sistem artikel/blog terintegrasi
+- **Responsive Design**: Kompatibel dengan semua perangkat
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠️ Tech Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Framework**: Laravel 11
+- **Frontend**: Bootstrap 5, Inter Font, Custom CSS
+- **Database**: MySQL
+- **Authentication**: Laravel Breeze
+- **Icons**: Bootstrap Icons
+- **Styling**: Custom CSS dengan efek modern
 
-## Learning Laravel
+## 📋 Persyaratan Sistem
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- PHP 8.1 atau lebih tinggi
+- Composer
+- Node.js & NPM
+- MySQL
+- Laravel 11
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🚀 Instalasi
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. **Clone Repository**
+   ```bash
+   git clone https://github.com/Rasyidrlqr/travel-jogja.git
+   cd travel-jogja
+   ```
 
-## Laravel Sponsors
+2. **Install Dependencies**
+   ```bash
+   composer install
+   npm install
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+3. **Environment Setup**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-### Premium Partners
+4. **Database Configuration**
+   - Buat database MySQL
+   - Konfigurasi `.env` file dengan database credentials
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+5. **Run Migrations**
+   ```bash
+   php artisan migrate
+   ```
 
-## Contributing
+6. **Seed Database** (opsional)
+   ```bash
+   php artisan db:seed
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+7. **Build Assets**
+   ```bash
+   npm run build
+   # atau untuk development
+   npm run dev (optional)
+   ```
 
-## Code of Conduct
+8. **Start Server**
+   ```bash
+   php artisan serve
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 👥 User Roles
 
-## Security Vulnerabilities
+### Admin
+- Akses penuh ke semua fitur
+- Dapat mengelola user
+- Mengelola semua konten website
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Sub Admin
+- Akses ke dashboard admin
+- Dapat mengelola blog, layanan, paket wisata, galeri
+- Tidak dapat mengelola user
 
-## License
+### User
+- Akses ke website publik
+- Dapat melihat semua konten
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 📁 Struktur Project
 
-# travel-jogja
-website travel jogja laravel 11
+```
+travel-jogja/
+├── app/
+│   ├── Http/Controllers/
+│   │   ├── Admin/          # Controller admin
+│   │   └── Auth/           # Controller autentikasi
+│   ├── Models/             # Model Eloquent
+│   └── Middleware/         # Custom middleware
+├── database/
+│   ├── migrations/         # Database migrations
+│   └── seeders/            # Database seeders
+├── public/                 # Assets publik
+├── resources/
+│   ├── css/               # Custom CSS
+│   ├── js/                # JavaScript
+│   └── views/             # Blade templates
+├── routes/
+│   └── web.php            # Route definitions
+└── .env.example           # Environment template
+```
+
+## 🔧 Konfigurasi
+
+### Environment Variables
+```env
+APP_NAME=Travel Jogja
+APP_ENV=local
+APP_KEY=base64_key
+APP_DEBUG=true
+APP_URL=http://localhost
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=travel_jogja
+DB_USERNAME=root
+DB_PASSWORD=
+
+MAIL_MAILER=log
+```
+
+### Ngrok Support
+Aplikasi ini mendukung tunneling dengan Ngrok. Pastikan untuk mengupdate `APP_URL` di `.env` dengan URL Ngrok saat menggunakan tunneling(beta).
+
+## 📚 API Routes
+
+### Public Routes
+- `GET /` - Homepage
+- `GET /blog` - Blog listing
+- `GET /services` - Services page
+- `GET /tours` - Tours listing
+- `GET /gallery` - Gallery page
+
+### Admin Routes (middleware: auth, admin)
+- `GET /admin/dashboard` - Admin dashboard
+- `GET /admin/user` - User management
+- `GET /admin/blog` - Blog management
+- `GET /admin/service` - Service management
+- `GET /admin/tour` - Tour management
+- `GET /admin/gallery` - Gallery management
+
+## 🎨 Customization
+
+### Styling
+- Edit `resources/css/app.css` untuk custom styles
+- Gunakan Bootstrap classes untuk konsistensi
+
+### Views
+- Blade templates di `resources/views/`
+- Layout utama: `layouts/app.blade.php` dan `layouts/navigation.blade.php`
+
+### Components
+- Reusable components di `resources/views/components/`
+
+## 🧪 Testing
+
+```bash
+# Run tests
+php artisan test
+
+# Run specific test
+php artisan test --filter TestName
+```
+
+## 📦 Deployment
+
+1. **Production Environment**
+   ```bash
+   APP_ENV=production
+   APP_DEBUG=false
+   ```
+
+2. **Optimize Laravel**
+   ```bash
+   php artisan config:cache
+   php artisan route:cache
+   php artisan view:cache
+   ```
+
+3. **Build Assets**
+   ```bash
+   npm run build
+   ```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👨‍💻 Developer
+
+**Rasyid** - *Initial work* - [GitHub](https://github.com/Rasyidrlqr)
+
+## 🙏 Acknowledgments
+
+- Laravel Framework
+- Bootstrap
+- Bootstrap Icons
+- Unsplash (untuk gambar sample)
+- Komunitas Laravel Indonesia
