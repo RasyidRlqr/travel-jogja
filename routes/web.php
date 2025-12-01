@@ -14,10 +14,7 @@ Route::middleware('track.views')->group(function () {
     Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
 });
 
-// Auth Routes
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Auth Routes (dashboard removed as not used)
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -26,27 +26,27 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-semibold text-dark" href="/#services">
+                    <a class="nav-link fw-semibold text-dark" href="/#services" data-section="services">
                         <i class="bi bi-gear me-1"></i>Layanan
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-semibold text-dark" href="/#tours">
+                    <a class="nav-link fw-semibold {{ request()->routeIs('tours') ? 'active text-primary' : 'text-dark' }}" href="{{ route('tours') }}">
                         <i class="bi bi-map me-1"></i>Paket Wisata
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-semibold text-dark" href="/#gallery">
+                    <a class="nav-link fw-semibold {{ request()->routeIs('gallery') ? 'active text-primary' : 'text-dark' }}" href="{{ route('gallery') }}">
                         <i class="bi bi-images me-1"></i>Galeri
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-semibold text-dark" href="{{ route('blog') }}">
+                    <a class="nav-link fw-semibold {{ request()->routeIs('blog') ? 'active text-primary' : 'text-dark' }}" href="{{ route('blog') }}">
                         <i class="bi bi-pencil-square me-1"></i>Blog
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-semibold text-dark" href="/#contact">
+                    <a class="nav-link fw-semibold text-dark" href="/#contact" data-section="contact">
                         <i class="bi bi-envelope me-1"></i>Kontak
                     </a>
                 </li>
@@ -118,3 +118,45 @@
         </div>
     </div>
 </nav>
+
+<script>
+    // Function to set active nav link based on current section
+    function setActiveNavLink() {
+        const navLinks = document.querySelectorAll('.navbar-nav .nav-link[data-section]');
+        const currentHash = window.location.hash.substring(1); // Remove #
+
+        navLinks.forEach(link => {
+            link.classList.remove('active', 'text-primary');
+            link.classList.add('text-dark');
+        });
+
+        if (currentHash) {
+            const activeLink = document.querySelector(`.navbar-nav .nav-link[data-section="${currentHash}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active', 'text-primary');
+                activeLink.classList.remove('text-dark');
+            }
+        } else {
+            // Default to home if no hash
+            const homeLink = document.querySelector('.navbar-nav .nav-link[href="/"]');
+            if (homeLink) {
+                homeLink.classList.add('active', 'text-primary');
+                homeLink.classList.remove('text-dark');
+            }
+        }
+    }
+
+    // Set active on page load
+    document.addEventListener('DOMContentLoaded', setActiveNavLink);
+
+    // Set active on hash change
+    window.addEventListener('hashchange', setActiveNavLink);
+
+    // Handle smooth scroll clicks
+    document.querySelectorAll('.navbar-nav .nav-link[data-section]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Allow default behavior for smooth scroll
+            setTimeout(setActiveNavLink, 100); // Small delay to allow hash to update
+        });
+    });
+</script>
