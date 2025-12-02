@@ -68,7 +68,7 @@ Website wisata Yogyakarta yang dibangun dengan Laravel 11. Platform lengkap untu
    ```bash
    npm run build
    # atau untuk development
-   npm run dev (optional)
+   npm run dev
    ```
 
 8. **Start Server**
@@ -136,7 +136,7 @@ MAIL_MAILER=log
 ```
 
 ### Ngrok Support
-Aplikasi ini mendukung tunneling dengan Ngrok. Pastikan untuk mengupdate `APP_URL` di `.env` dengan URL Ngrok saat menggunakan tunneling(beta).
+Aplikasi ini mendukung tunneling dengan Ngrok. Pastikan untuk mengupdate `APP_URL` di `.env` dengan URL Ngrok saat menggunakan tunneling (beta).
 
 ## 📚 API Routes
 
@@ -208,11 +208,11 @@ php artisan test --filter TestName
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details.
 
 ## 👨‍💻 Developer
 
-**Rasyid** - *Initial work* - [GitHub](https://github.com/Rasyidrlqr)
+**Rasyid Rlqr** - *Initial work* - [GitHub](https://github.com/Rasyidrlqr)
 
 ## 🙏 Acknowledgments
 
