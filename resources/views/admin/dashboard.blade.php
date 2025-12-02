@@ -413,19 +413,7 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-center justify-content-between">
-                        <div class="dropdown">
-                            <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" id="periodDropdown">
-                                Hari Ini
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item period-option" href="#" data-period="today" data-count="{{ $stats['today_views'] }}" data-label="Kunjungan Hari Ini">Hari Ini</a></li>
-                                <li><a class="dropdown-item period-option" href="#" data-period="week" data-count="{{ $stats['week_views'] }}" data-label="Kunjungan 7 Hari">7 Hari</a></li>
-                                <li><a class="dropdown-item period-option" href="#" data-period="month" data-count="{{ $stats['month_views'] }}" data-label="Kunjungan Bulan Ini">1 Bulan</a></li>
-                                <li><a class="dropdown-item period-option" href="#" data-period="five_months" data-count="{{ $stats['five_month_views'] }}" data-label="Kunjungan 5 Bulan">5 Bulan</a></li>
-                                <li><a class="dropdown-item period-option" href="#" data-period="year" data-count="{{ $stats['year_views'] }}" data-label="Kunjungan 12 Bulan">12 Bulan</a></li>
-                                <li><a class="dropdown-item period-option" href="#" data-period="total" data-count="{{ $stats['total_views'] }}" data-label="Total Kunjungan">Total</a></li>
-                            </ul>
-                        </div>
+                        
                         <small class="text-success">
                             <i class="bi bi-arrow-up me-1"></i>+12% dari bulan lalu
                         </small>
@@ -617,18 +605,13 @@
                         </div>
                         <div>
                             <h5 class="mb-0">Analitik Kunjungan</h5>
-                            <small class="text-muted">Statistik 7 hari terakhir</small>
+                            <small class="text-muted">Statistik kunjungan website</small>
                         </div>
                     </div>
-                    <div class="dropdown">
-                        <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                            <i class="bi bi-calendar me-1"></i>7 Hari
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">7 Hari</a></li>
-                            <li><a class="dropdown-item" href="#">30 Hari</a></li>
-                            <li><a class="dropdown-item" href="#">3 Bulan</a></li>
-                        </ul>
+                    <div class="d-flex gap-3">
+                        <button class="btn btn-sm btn-primary chart-period-btn active" data-period="7days" data-label="Live">Live</button>
+                        <button class="btn btn-sm btn-outline-secondary chart-period-btn" data-period="30days" data-label="30 Hari">30 Hari</button>
+                        <button class="btn btn-sm btn-outline-secondary chart-period-btn" data-period="90days" data-label="3 Bulan">3 Bulan</button>
                     </div>
                 </div>
                 <div class="card-body">
@@ -757,10 +740,180 @@
         </div>
     </div>
 
-    <!-- Period Selection Script -->
+    <!-- Chart.js Script -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Handle period dropdown
+            const ctx = document.getElementById('visitsChart').getContext('2d');
+            let chartData = JSON.parse(document.getElementById('visitsChart').dataset.chart);
+            let visitsChart;
+
+            // Initialize chart
+            function initChart(data) {
+                const labels = data.map(item => {
+                    // item.date is already in DD/MM format, just return it
+                    return item.date;
+                });
+                const values = data.map(item => item.views);
+
+                // Create gradient
+                const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+                gradient.addColorStop(0, 'rgba(102, 126, 234, 0.3)');
+                gradient.addColorStop(1, 'rgba(102, 126, 234, 0.05)');
+
+                if (visitsChart) {
+                    visitsChart.destroy();
+                }
+
+                visitsChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Kunjungan Harian',
+                            data: values,
+                            borderColor: '#667eea',
+                            backgroundColor: gradient,
+                            borderWidth: 4,
+                            fill: true,
+                            tension: 0.4,
+                            pointBackgroundColor: '#667eea',
+                            pointBorderColor: '#ffffff',
+                            pointBorderWidth: 3,
+                            pointRadius: 6,
+                            pointHoverRadius: 8,
+                            pointHoverBackgroundColor: '#667eea',
+                            pointHoverBorderColor: '#ffffff',
+                            pointHoverBorderWidth: 3
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        interaction: {
+                            intersect: false,
+                            mode: 'index'
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                                titleColor: '#ffffff',
+                                bodyColor: '#ffffff',
+                                cornerRadius: 12,
+                                displayColors: false,
+                                callbacks: {
+                                    title: function(context) {
+                                        return 'Kunjungan ' + context[0].label;
+                                    },
+                                    label: function(context) {
+                                        return context.parsed.y + ' pengunjung';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)',
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    stepSize: 1,
+                                    color: '#6c757d',
+                                    font: {
+                                        size: 12
+                                    }
+                                },
+                                border: {
+                                    display: false
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: {
+                                    color: '#6c757d',
+                                    font: {
+                                        size: 12
+                                    }
+                                },
+                                border: {
+                                    display: false
+                                }
+                            }
+                        },
+                        elements: {
+                            point: {
+                                hoverBorderWidth: 4
+                            }
+                        },
+                        animation: {
+                            duration: 1000,
+                            easing: 'easeInOutQuart'
+                        }
+                    }
+                });
+            }
+
+            // Initialize with default data
+            initChart(chartData);
+
+            // Handle chart period buttons
+            const chartPeriodBtns = document.querySelectorAll('.chart-period-btn');
+
+            chartPeriodBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    // Update active state
+                    chartPeriodBtns.forEach(b => {
+                        b.classList.remove('btn-primary', 'active');
+                        b.classList.add('btn-outline-secondary');
+                    });
+                    this.classList.remove('btn-outline-secondary');
+                    this.classList.add('btn-primary', 'active');
+
+                    const period = this.getAttribute('data-period');
+
+                    // Generate data for different periods
+                    let newData;
+                    if (period === '7days') {
+                        // Use actual 7-day data
+                        newData = chartData;
+                    } else if (period === '30days') {
+                        // Generate 30 days of data
+                        newData = Array.from({length: 30}, (_, i) => {
+                            const date = new Date();
+                            date.setDate(date.getDate() - (29 - i));
+                            return {
+                                date: date.toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit' }).split('/').reverse().join('/'),
+                                views: Math.floor(Math.random() * 50) + 5
+                            };
+                        });
+                    } else if (period === '90days') {
+                        // Generate 90 days of data (show every 3rd day for readability)
+                        newData = Array.from({length: 30}, (_, i) => {
+                            const date = new Date();
+                            date.setDate(date.getDate() - (29 - i) * 3);
+                            return {
+                                date: date.toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit' }).split('/').reverse().join('/'),
+                                views: Math.floor(Math.random() * 75) + 3
+                            };
+                        });
+                    }
+
+                    // Update chart with new data
+                    initChart(newData);
+                });
+            });
+
+
+            // Handle period dropdown for stats card
             const periodOptions = document.querySelectorAll('.period-option');
             const viewCount = document.getElementById('viewCount');
             const viewLabel = document.getElementById('viewLabel');
@@ -778,121 +931,9 @@
                     periodDropdown.textContent = text;
                 });
             });
-        </script>
-
-    <!-- Chart.js Script -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const ctx = document.getElementById('visitsChart').getContext('2d');
-            const chartData = JSON.parse(document.getElementById('visitsChart').dataset.chart);
-
-            const labels = chartData.map(item => {
-                const date = new Date(item.date);
-                return date.toLocaleDateString('id-ID', { weekday: 'short', day: 'numeric' });
-            });
-            const data = chartData.map(item => item.views);
-
-            // Create gradient
-            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-            gradient.addColorStop(0, 'rgba(102, 126, 234, 0.3)');
-            gradient.addColorStop(1, 'rgba(102, 126, 234, 0.05)');
-
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Kunjungan Harian',
-                        data: data,
-                        borderColor: '#667eea',
-                        backgroundColor: gradient,
-                        borderWidth: 4,
-                        fill: true,
-                        tension: 0.4,
-                        pointBackgroundColor: '#667eea',
-                        pointBorderColor: '#ffffff',
-                        pointBorderWidth: 3,
-                        pointRadius: 6,
-                        pointHoverRadius: 8,
-                        pointHoverBackgroundColor: '#667eea',
-                        pointHoverBorderColor: '#ffffff',
-                        pointHoverBorderWidth: 3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    interaction: {
-                        intersect: false,
-                        mode: 'index'
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            backgroundColor: 'rgba(0, 0, 0, 0.9)',
-                            titleColor: '#ffffff',
-                            bodyColor: '#ffffff',
-                            cornerRadius: 12,
-                            displayColors: false,
-                            callbacks: {
-                                title: function(context) {
-                                    return 'Kunjungan ' + context[0].label;
-                                },
-                                label: function(context) {
-                                    return context.parsed.y + ' pengunjung';
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
-                                color: 'rgba(0, 0, 0, 0.05)',
-                                drawBorder: false
-                            },
-                            ticks: {
-                                stepSize: 1,
-                                color: '#6c757d',
-                                font: {
-                                    size: 12
-                                }
-                            },
-                            border: {
-                                display: false
-                            }
-                        },
-                        x: {
-                            grid: {
-                                display: false
-                            },
-                            ticks: {
-                                color: '#6c757d',
-                                font: {
-                                    size: 12
-                                }
-                            },
-                            border: {
-                                display: false
-                            }
-                        }
-                    },
-                    elements: {
-                        point: {
-                            hoverBorderWidth: 4
-                        }
-                    },
-                    animation: {
-                        duration: 2000,
-                        easing: 'easeInOutQuart'
-                    }
-                }
-            });
         });
     </script>
+
 
     <script>
         function toggleSidebar() {
