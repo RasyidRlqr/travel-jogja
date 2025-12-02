@@ -13,11 +13,11 @@ class TrackPageView
     {
         $response = $next($request);
 
-        // Only track GET requests and exclude admin routes
-        if ($request->isMethod('get') && !$request->is('admin/*')) {
-            $page = $request->path() ?: 'home';
+        // Only track GET requests for home page (/) and exclude admin routes
+        if ($request->isMethod('get') && !$request->is('admin/*') && $request->is('/')) {
+            $page = '/';
 
-            // Track unique IPs per day - don't track the same IP for the same page within the same day
+            // Track unique IPs per day - don't track the same IP for the home page within the same day
             $existingView = PageView::where('page', $page)
                 ->where('ip_address', $request->ip())
                 ->whereDate('created_at', today())
