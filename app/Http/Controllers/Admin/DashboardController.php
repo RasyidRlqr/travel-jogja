@@ -34,9 +34,11 @@ class DashboardController extends Controller
         for ($i = 6; $i >= 0; $i--) {
             $date = now()->subDays($i);
             $count = \App\Models\PageView::whereDate('created_at', $date)->count();
+            // Use actual count if > 0, otherwise use sample data to show chart activity
+            $views = $count > 0 ? $count : max(1, rand(3, 8));
             $chartData[] = [
                 'date' => $date->format('d/m'), // Format: DD/MM
-                'views' => $count ?: rand(10, 30) // Add sample data with higher values
+                'views' => $views
             ];
         }
 

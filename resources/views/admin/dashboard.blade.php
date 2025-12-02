@@ -913,24 +913,6 @@
             });
 
 
-            // Handle period dropdown for stats card
-            const periodOptions = document.querySelectorAll('.period-option');
-            const viewCount = document.getElementById('viewCount');
-            const viewLabel = document.getElementById('viewLabel');
-            const periodDropdown = document.getElementById('periodDropdown');
-
-            periodOptions.forEach(option => {
-                option.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const count = this.getAttribute('data-count');
-                    const label = this.getAttribute('data-label');
-                    const text = this.textContent;
-
-                    viewCount.textContent = parseInt(count).toLocaleString('id-ID');
-                    viewLabel.textContent = label;
-                    periodDropdown.textContent = text;
-                });
-            });
         });
     </script>
 
