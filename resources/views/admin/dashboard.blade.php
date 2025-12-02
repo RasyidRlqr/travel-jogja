@@ -412,8 +412,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center justify-content-between">
-                        
+                    <div class="d-flex align-items-center justify-content-between mt-3">
+                        <div></div>
                         <small class="text-success">
                             <i class="bi bi-arrow-up me-1"></i>+12% dari bulan lalu
                         </small>

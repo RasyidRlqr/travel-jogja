@@ -13,19 +13,19 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Basic statistics
+        // Basic statistics - only count home page views
         $stats = [
             'blogs' => Blog::count(),
             'services' => Service::count(),
             'tours' => Tour::count(),
             'galleries' => Gallery::count(),
             'users' => \App\Models\User::count(),
-            'total_views' => \App\Models\PageView::count(),
-            'today_views' => \App\Models\PageView::getViewsLastDay(),
-            'week_views' => \App\Models\PageView::getViewsLastWeek(),
-            'month_views' => \App\Models\PageView::getViewsLastMonth(),
-            'five_month_views' => \App\Models\PageView::getViewsLast5Months(),
-            'year_views' => \App\Models\PageView::getViewsLastYear(),
+            'total_views' => \App\Models\PageView::where('page', '/')->count(),
+            'today_views' => \App\Models\PageView::where('page', '/')->whereDate('created_at', today())->count(),
+            'week_views' => \App\Models\PageView::where('page', '/')->where('created_at', '>=', now()->subDays(7))->count(),
+            'month_views' => \App\Models\PageView::where('page', '/')->where('created_at', '>=', now()->subDays(30))->count(),
+            'five_month_views' => \App\Models\PageView::where('page', '/')->where('created_at', '>=', now()->subDays(150))->count(),
+            'year_views' => \App\Models\PageView::where('page', '/')->where('created_at', '>=', now()->subDays(365))->count(),
         ];
 
         // Chart data - last 7 days visits (current week) - chronological order
@@ -33,9 +33,9 @@ class DashboardController extends Controller
         $chartData = [];
         for ($i = 6; $i >= 0; $i--) {
             $date = now()->subDays($i);
-            $count = \App\Models\PageView::whereDate('created_at', $date)->count();
-            // Use actual count if > 0, otherwise use sample data to show chart activity
-            $views = $count > 0 ? $count : max(1, rand(3, 8));
+            $count = \App\Models\PageView::where('page', '/')->whereDate('created_at', $date)->count();
+            // Use actual count, no sample data needed since we're only tracking home page
+            $views = $count;
             $chartData[] = [
                 'date' => $date->format('d/m'), // Format: DD/MM
                 'views' => $views
