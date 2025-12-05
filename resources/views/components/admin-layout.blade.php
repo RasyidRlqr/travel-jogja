@@ -54,11 +54,6 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('admin.service.*') ? 'active' : '' }}" href="{{ route('admin.service.index') }}">
-                                <i class="bi bi-gear me-2"></i>Layanan
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('admin.tour.*') ? 'active' : '' }}" href="{{ route('admin.tour.index') }}">
                                 <i class="bi bi-map me-2"></i>Paket Wisata
                             </a>

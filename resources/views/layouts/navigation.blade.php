@@ -72,9 +72,7 @@
                                 <li><a class="dropdown-item py-2" href="{{ route('admin.blog.index') }}">
                                     <i class="bi bi-pencil-square me-2"></i>Kelola Blog
                                 </a></li>
-                                <li><a class="dropdown-item py-2" href="{{ route('admin.service.index') }}">
-                                    <i class="bi bi-gear me-2"></i>Kelola Layanan
-                                </a></li>
+                               
                                 <li><a class="dropdown-item py-2" href="{{ route('admin.tour.index') }}">
                                     <i class="bi bi-map me-2"></i>Kelola Tour
                                 </a></li>

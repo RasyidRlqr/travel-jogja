@@ -231,12 +231,6 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.service.index') }}">
-                    <i class="bi bi-gear"></i>
-                    <span>Layanan</span>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.tour.index') }}">
                     <i class="bi bi-map"></i>
                     <span>Paket Wisata</span>

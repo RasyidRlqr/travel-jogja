@@ -219,5 +219,4 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 - Laravel Framework
 - Bootstrap
 - Bootstrap Icons
-- Unsplash (untuk gambar sample)
 - Komunitas Laravel Indonesia

@@ -258,12 +258,7 @@
                     <span>Blog</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.service.index') }}">
-                    <i class="bi bi-gear"></i>
-                    <span>Layanan</span>
-                </a>
-            </li>
+          
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.tour.index') }}">
                     <i class="bi bi-map"></i>
@@ -656,16 +651,6 @@
                             </div>
                         </a>
 
-                        <a href="{{ route('admin.service.create') }}" class="btn btn-info btn-modern d-flex align-items-center justify-content-center">
-                            <div class="bg-white bg-opacity-20 rounded-2 p-2 me-3">
-                                <i class="bi bi-plus-circle text-white"></i>
-                            </div>
-                            <div class="text-start">
-                                <div class="fw-semibold">Tambah Layanan</div>
-                                <small class="opacity-75">Tambah layanan baru</small>
-                            </div>
-                        </a>
-
                         <a href="{{ route('admin.gallery.create') }}" class="btn btn-warning btn-modern d-flex align-items-center justify-content-center">
                             <div class="bg-white bg-opacity-20 rounded-2 p-2 me-3">
                                 <i class="bi bi-plus-circle text-white"></i>
@@ -943,3 +928,5 @@
     </script>
 </body>
 </html>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
