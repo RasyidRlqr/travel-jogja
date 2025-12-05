@@ -390,7 +390,7 @@
                                     <small class="badge bg-success-subtle text-success">Tersedia</small>
                                 </div>
                             </div>
-                            <a href="#contact" class="btn btn-primary w-100 btn-modern text-decoration-none">
+                            <a href="https://wa.me/6281234567890?text=Halo, saya ingin pesan paket Borobudur Adventure" class="btn btn-primary w-100 btn-modern text-decoration-none">
                                 <i class="bi bi-cart-plus me-2"></i>Pesan Sekarang
                             </a>
                         </div>
@@ -423,7 +423,7 @@
                                     <small class="badge bg-success-subtle text-success">Tersedia</small>
                                 </div>
                             </div>
-                            <a href="#contact" class="btn btn-primary w-100 btn-modern text-decoration-none">
+                            <a href="https://wa.me/6281234567890?text=Halo, saya ingin pesan paket Prambanan Discovery" class="btn btn-primary w-100 btn-modern text-decoration-none">
                                 <i class="bi bi-cart-plus me-2"></i>Pesan Sekarang
                             </a>
                         </div>
@@ -456,7 +456,7 @@
                                     <small class="badge bg-success-subtle text-success">Tersedia</small>
                                 </div>
                             </div>
-                            <a href="#contact" class="btn btn-primary w-100 btn-modern text-decoration-none">
+                            <a href="https://wa.me/6281234567890?text=Halo, saya ingin pesan paket Malioboro Experience" class="btn btn-primary w-100 btn-modern text-decoration-none">
                                 <i class="bi bi-cart-plus me-2"></i>Pesan Sekarang
                             </a>
                         </div>
@@ -488,7 +488,7 @@
             <div class="row g-3">
                 <div class="col-md-4">
                     <div class="gallery-item position-relative overflow-hidden rounded-4">
-                        <img src="https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?w=400&h=300&fit=crop"
+                        <img src="https://i.imgur.com/3c9iEjy.jpeg?w=400&h=300&fit=crop"
                               class="w-100" alt="Borobudur Sunrise" style="height: 200px; object-fit: cover;">
                         <div class="p-3 bg-white">
                             <h6 class="fw-bold text-dark mb-2">Borobudur Sunrise</h6>
@@ -499,7 +499,7 @@
 
                 <div class="col-md-4">
                     <div class="gallery-item position-relative overflow-hidden rounded-4">
-                        <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=400&h=300&fit=crop"
+                        <img src="https://i.imgur.com/NvoqKzs.jpeg?w=400&h=300&fit=crop"
                               class="w-100" alt="Borobudur Temple" style="height: 200px; object-fit: cover;">
                         <div class="p-3 bg-white">
                             <h6 class="fw-bold text-dark mb-2">Borobudur Temple</h6>
@@ -510,7 +510,7 @@
 
                 <div class="col-md-4">
                     <div class="gallery-item position-relative overflow-hidden rounded-4">
-                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
+                        <img src="https://i.imgur.com/gopdCwg.jpeg?w=400&h=300&fit=crop"
                               class="w-100" alt="Prambanan Temple" style="height: 200px; object-fit: cover;">
                         <div class="p-3 bg-white">
                             <h6 class="fw-bold text-dark mb-2">Prambanan Temple</h6>
@@ -521,7 +521,7 @@
 
                 <div class="col-md-4">
                     <div class="gallery-item position-relative overflow-hidden rounded-4">
-                        <img src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?w=400&h=300&fit=crop"
+                        <img src="https://i.imgur.com/4Iq8ujz.jpeg?w=400&h=300&fit=crop"
                               class="w-100" alt="Malioboro Street" style="height: 200px; object-fit: cover;">
                         <div class="p-3 bg-white">
                             <h6 class="fw-bold text-dark mb-2">Malioboro Street</h6>
@@ -532,7 +532,7 @@
 
                 <div class="col-md-4">
                     <div class="gallery-item position-relative overflow-hidden rounded-4">
-                        <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=400&h=300&fit=crop"
+                        <img src="https://i.imgur.com/zjrPHx9.jpeg?w=400&h=300&fit=crop"
                               class="w-100" alt="Cultural Dance" style="height: 200px; object-fit: cover;">
                         <div class="p-3 bg-white">
                             <h6 class="fw-bold text-dark mb-2">Cultural Dance</h6>
@@ -543,7 +543,7 @@
 
                 <div class="col-md-4">
                     <div class="gallery-item position-relative overflow-hidden rounded-4">
-                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
+                        <img src="https://i.imgur.com/bGntmWf.jpeg?w=400&h=300&fit=crop"
                               class="w-100" alt="Traditional Food" style="height: 200px; object-fit: cover;">
                         <div class="p-3 bg-white">
                             <h6 class="fw-bold text-dark mb-2">Traditional Food</h6>

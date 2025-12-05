@@ -9,7 +9,6 @@ Route::middleware('track.views')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
     Route::get('/blog/{slug}', [HomeController::class, 'blogDetail'])->name('blog.detail');
-    Route::get('/services', [HomeController::class, 'services'])->name('services');
     Route::get('/tours', [HomeController::class, 'tours'])->name('tours');
     Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
 });
@@ -33,9 +32,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
     // Blog Management
     Route::resource('blog', App\Http\Controllers\Admin\BlogController::class);
-
-    // Service Management
-    Route::resource('service', App\Http\Controllers\Admin\ServiceController::class);
 
     // Tour Management
     Route::resource('tour', App\Http\Controllers\Admin\TourController::class);

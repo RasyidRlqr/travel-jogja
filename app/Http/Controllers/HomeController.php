@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
-use App\Models\Service;
 use App\Models\Tour;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
@@ -13,11 +12,10 @@ class HomeController extends Controller
     public function index()
     {
         $featured_tours = Tour::latest()->take(3)->get();
-        $services = Service::all();
         $latest_blogs = Blog::latest()->take(3)->get();
         $galleries = Gallery::latest()->take(6)->get();
 
-        return view('welcome', compact('featured_tours', 'services', 'latest_blogs', 'galleries'));
+        return view('welcome', compact('featured_tours', 'latest_blogs', 'galleries'));
     }
 
     public function blog()
@@ -33,11 +31,6 @@ class HomeController extends Controller
         return view('blog.detail', compact('blog', 'related_blogs'));
     }
 
-    public function services()
-    {
-        $services = Service::all();
-        return view('services.index', compact('services'));
-    }
 
     public function tours()
     {
