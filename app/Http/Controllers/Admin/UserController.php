@@ -10,12 +10,41 @@ class UserController extends Controller
 {
     public function index()
     {
-        if (!auth()->user()->isAdmin()) {
-            abort(403, 'Unauthorized - Full admin access required');
+        if (!auth()->user()->isAdminLevel()) {
+            abort(403, 'Unauthorized - Admin access required');
         }
 
         $users = User::latest()->paginate(10);
         return view('admin.user.index', compact('users'));
+    }
+
+    public function create()
+    {
+        if (!auth()->user()->isAdmin()) {
+            abort(403, 'Unauthorized - Full admin access required');
+        }
+
+        return view('admin.user.create');
+    }
+
+    public function store(Request $request)
+    {
+        if (!auth()->user()->isAdmin()) {
+            abort(403, 'Unauthorized - Full admin access required');
+        }
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
+            'role' => 'required|in:admin,sub_admin',
+        ]);
+
+        $validated['password'] = bcrypt($validated['password']);
+
+        User::create($validated);
+
+        return redirect()->route('admin.user.index')->with('success', 'User berhasil ditambahkan!');
     }
 
     public function edit(User $user)
@@ -36,7 +65,7 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
-            'role' => 'required|in:user,admin,sub_admin',
+            'role' => 'required|in:admin,sub_admin',
         ]);
 
         $user->update($validated);

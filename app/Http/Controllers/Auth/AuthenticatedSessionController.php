@@ -36,7 +36,7 @@ class AuthenticatedSessionController extends Controller
             $request->session()->invalidate();
             $request->session()->regenerateToken();
 
-            return redirect('/login')->withErrors([
+            return redirect('/admin')->withErrors([
                 'email' => 'Admin users must login via the admin portal.',
             ]);
         }

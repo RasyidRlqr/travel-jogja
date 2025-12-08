@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
 
 // Admin Login
 Route::get('/admin', function () {
-    if (auth()->check()) {
+    if (auth()->    check()) {
         return redirect('/admin/dashboard');
     }
     return app(AuthenticatedSessionController::class)->create();
@@ -39,7 +39,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
     // User Management
-    Route::resource('user', App\Http\Controllers\Admin\UserController::class)->except(['create', 'store', 'show']);
+    Route::resource('user', App\Http\Controllers\Admin\UserController::class)->except(['show']);
 
     // Blog Management
     Route::resource('blog', App\Http\Controllers\Admin\BlogController::class);

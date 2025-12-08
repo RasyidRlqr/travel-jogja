@@ -41,7 +41,7 @@
                                 <i class="bi bi-house-door me-2"></i>Dashboard
                             </a>
                         </li>
-                        @if(auth()->user()->isAdmin())
+                        @if(auth()->user()->isAdminLevel())
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('admin.user.*') ? 'active' : '' }}" href="{{ route('admin.user.index') }}">
                                 <i class="bi bi-people me-2"></i>User Management

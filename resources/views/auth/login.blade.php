@@ -198,14 +198,7 @@
                                     @endif
                                 </div>
 
-                                <hr class="my-4">
-
-                                <div class="text-center">
-                                    <p class="text-muted mb-2">Belum punya akun?</p>
-                                    <a href="{{ route('register') }}" class="btn btn-outline-primary btn-modern">
-                                        <i class="bi bi-person-plus me-2"></i>Daftar Sekarang
-                                    </a>
-                                </div>
+                                <!-- Registration removed - admin only access -->
                             </form>
                         </div>
                     </div>
