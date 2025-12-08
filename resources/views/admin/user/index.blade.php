@@ -341,6 +341,11 @@
 
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="h4 mb-0">Daftar User</h2>
+                @if(auth()->user()->isAdmin())
+                <a href="{{ route('admin.user.create') }}" class="btn btn-primary">
+                    <i class="bi bi-plus-circle me-2"></i>Add Users
+                </a>
+                @endif
             </div>
 
             <div class="card border-0 shadow-sm">
@@ -380,12 +385,11 @@
                                                 <span class="badge bg-danger">Admin</span>
                                             @elseif($user->role === 'sub_admin')
                                                 <span class="badge bg-warning text-dark">Sub Admin</span>
-                                            @else
-                                                <span class="badge bg-secondary">User</span>
                                             @endif
                                         </td>
                                         <td>{{ $user->created_at->format('d M Y') }}</td>
                                         <td>
+                                            @if(auth()->user()->isAdmin())
                                             <div class="btn-group" role="group">
                                                 <a href="{{ route('admin.user.edit', $user) }}" class="btn btn-sm btn-outline-primary">
                                                     <i class="bi bi-pencil"></i>
@@ -400,6 +404,9 @@
                                                     </form>
                                                 @endif
                                             </div>
+                                            @else
+                                            <span class="text-muted small">View Only</span>
+                                            @endif
                                         </td>
                                     </tr>
                                 @empty

@@ -105,17 +105,6 @@
                             </li>
                         </ul>
                     </li>
-                @else
-                    <li class="nav-item">
-                        <a class="nav-link fw-semibold text-dark" href="{{ route('login') }}">
-                            <i class="bi bi-box-arrow-in-right me-1"></i>Login
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary rounded-pill px-4 py-2 ms-2 fw-semibold" href="{{ route('register') }}">
-                            <i class="bi bi-person-plus me-1"></i>Daftar
-                        </a>
-                    </li>
                 @endauth
             </ul>
         </div>

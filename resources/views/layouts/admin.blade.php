@@ -240,12 +240,14 @@
                     <span>Galeri</span>
                 </a>
             </li>
+            @if(auth()->user()->isAdminLevel())
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('admin.user.*') ? 'active' : '' }}" href="{{ route('admin.user.index') }}">
                     <i class="bi bi-people"></i>
                     <span>Pengguna</span>
                 </a>
             </li>
+            @endif
 
             <li class="nav-item mt-4">
                 <a class="nav-link text-warning" href="{{ route('home') }}" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">

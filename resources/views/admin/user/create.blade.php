@@ -104,31 +104,6 @@
             font-weight: 600;
         }
 
-        .stats-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            border: none;
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        .stats-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .stats-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin: 0 auto 1rem auto;
-        }
-
         .modern-card {
             background: white;
             border-radius: 15px;
@@ -196,6 +171,31 @@
                 display: block;
             }
         }
+
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .input-group-lg .input-group-text {
+            border-radius: 0.5rem 0 0 0.5rem;
+        }
+
+        .form-select:focus,
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+
+        .card-header {
+            border: none;
+            border-radius: 15px 15px 0 0 !important;
+        }
+
+        .modern-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+        }
     </style>
 </head>
 <body>
@@ -207,7 +207,7 @@
         <div class="brand">
             <div class="d-flex align-items-center justify-content-center mb-2">
                 <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3"
-                     style="width: 40px; height: 40px;">
+                      style="width: 40px; height: 40px;">
                     <i class="bi bi-compass text-white fs-5"></i>
                 </div>
                 <div>
@@ -274,7 +274,7 @@
                     <div class="dropdown">
                         <button class="btn btn-link text-dark dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-2"
-                                 style="width: 35px; height: 35px;">
+                                  style="width: 35px; height: 35px;">
                                 <i class="bi bi-person-fill text-white"></i>
                             </div>
                             <span class="d-none d-lg-inline">{{ Auth::user()->name }}</span>
@@ -304,7 +304,7 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h1 class="h2 mb-0">Edit User</h1>
+                            <h1 class="h2 mb-0">Tambah User</h1>
                             <p class="mb-0 opacity-75">Kelola konten dan data website Travel Jogja</p>
                         </div>
                         <div class="col-auto">
@@ -312,7 +312,7 @@
                                 <ol class="breadcrumb mb-0 bg-transparent p-0">
                                     <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-white">Dashboard</a></li>
                                     <li class="breadcrumb-item"><a href="{{ route('admin.user.index') }}" class="text-white">Kelola User</a></li>
-                                    <li class="breadcrumb-item active text-white-50" aria-current="page">Edit User</li>
+                                    <li class="breadcrumb-item active text-white-50" aria-current="page">Tambah User</li>
                                 </ol>
                             </nav>
                         </div>
@@ -337,56 +337,136 @@
             @endif
 
             <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-header bg-white">
-                            <h5 class="card-title mb-0">Form Edit User</h5>
+                <div class="col-xl-6 col-lg-8 col-md-10">
+                    <div class="modern-card shadow-lg">
+                        <div class="card-header bg-gradient-primary text-white">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-white bg-opacity-20 rounded-circle p-2 me-3">
+                                    <i class="bi bi-person-plus-fill fs-4"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0 fw-bold">Tambah User Baru</h5>
+                                    <small class="opacity-75">Buat akun admin atau sub-admin baru</small>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <form method="POST" action="{{ route('admin.user.update', $user) }}">
+                        <div class="card-body p-4">
+                            <form method="POST" action="{{ route('admin.user.store') }}" class="needs-validation" novalidate>
                                 @csrf
-                                @method('PUT')
 
-                                <div class="mb-3">
-                                    <label for="name" class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $user->name) }}" required>
-                                    @error('name')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
-                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email', $user->email) }}" required>
-                                    @error('email')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="role" class="form-label">Role <span class="text-danger">*</span></label>
-                                    <select class="form-select @error('role') is-invalid @enderror" id="role" name="role" required>
-                                        <option value="sub_admin" {{ old('role', $user->role) === 'sub_admin' ? 'selected' : '' }}>Sub Admin</option>
-                                        <option value="admin" {{ old('role', $user->role) === 'admin' ? 'selected' : '' }}>Admin</option>
-                                    </select>
-                                    @error('role')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <div class="mb-3">
-                                    <div class="form-text">
-                                        <strong>Info:</strong> Admin dapat mengelola semua fitur termasuk user. Sub Admin dapat mengakses dashboard tapi tidak bisa edit user.
+                                <!-- Name -->
+                                <div class="mb-4">
+                                    <label for="name" class="form-label fw-semibold text-dark mb-2">
+                                        <i class="bi bi-person-circle text-primary me-2"></i>Nama Lengkap
+                                    </label>
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-text bg-light border-end-0">
+                                            <i class="bi bi-person text-muted"></i>
+                                        </span>
+                                        <input id="name" type="text" class="form-control border-start-0 ps-0 @error('name') is-invalid @enderror"
+                                               name="name" value="{{ old('name') }}" required autofocus autocomplete="name"
+                                               placeholder="Masukkan nama lengkap" style="border-left: none; padding-left: 0;">
+                                        @error('name')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
 
-                                <div class="d-flex gap-2">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="bi bi-check-circle me-2"></i>Update User
-                                    </button>
-                                    <a href="{{ route('admin.user.index') }}" class="btn btn-secondary">
-                                        <i class="bi bi-arrow-left me-2"></i>Kembali
+                                <!-- Email -->
+                                <div class="mb-4">
+                                    <label for="email" class="form-label fw-semibold text-dark mb-2">
+                                        <i class="bi bi-envelope-circle text-primary me-2"></i>Alamat Email
+                                    </label>
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-text bg-light border-end-0">
+                                            <i class="bi bi-envelope text-muted"></i>
+                                        </span>
+                                        <input id="email" type="email" class="form-control border-start-0 ps-0 @error('email') is-invalid @enderror"
+                                               name="email" value="{{ old('email') }}" required autocomplete="username"
+                                               placeholder="contoh@email.com" style="border-left: none; padding-left: 0;">
+                                        @error('email')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <!-- Password -->
+                                <div class="mb-4">
+                                    <label for="password" class="form-label fw-semibold text-dark mb-2">
+                                        <i class="bi bi-shield-lock-circle text-primary me-2"></i>Password
+                                    </label>
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-text bg-light border-end-0">
+                                            <i class="bi bi-lock text-muted"></i>
+                                        </span>
+                                        <input id="password" type="password" class="form-control border-start-0 ps-0 @error('password') is-invalid @enderror"
+                                               name="password" required autocomplete="new-password"
+                                               placeholder="Minimal 8 karakter" style="border-left: none; padding-left: 0;">
+                                        <button class="btn btn-outline-secondary border-start-0" type="button" id="togglePassword">
+                                            <i class="bi bi-eye" id="passwordIcon"></i>
+                                        </button>
+                                        @error('password')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <!-- Confirm Password -->
+                                <div class="mb-4">
+                                    <label for="password_confirmation" class="form-label fw-semibold text-dark mb-2">
+                                        <i class="bi bi-shield-check-circle text-primary me-2"></i>Konfirmasi Password
+                                    </label>
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-text bg-light border-end-0">
+                                            <i class="bi bi-lock-fill text-muted"></i>
+                                        </span>
+                                        <input id="password_confirmation" type="password" class="form-control border-start-0 ps-0 @error('password_confirmation') is-invalid @enderror"
+                                               name="password_confirmation" required autocomplete="new-password"
+                                               placeholder="Ulangi password" style="border-left: none; padding-left: 0;">
+                                        <button class="btn btn-outline-secondary border-start-0" type="button" id="toggleConfirmPassword">
+                                            <i class="bi bi-eye" id="confirmPasswordIcon"></i>
+                                        </button>
+                                        @error('password_confirmation')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <!-- Role -->
+                                <div class="mb-4">
+                                    <label for="role" class="form-label fw-semibold text-dark mb-2">
+                                        <i class="bi bi-person-badge-circle text-primary me-2"></i>Level Akses
+                                    </label>
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-text bg-light border-end-0">
+                                            <i class="bi bi-shield-check text-muted"></i>
+                                        </span>
+                                        <select id="role" name="role" class="form-select border-start-0 ps-0 @error('role') is-invalid @enderror" required style="border-left: none; padding-left: 0;">
+                                            <option value="">Pilih level akses</option>
+                                            <option value="sub_admin" {{ old('role') == 'sub_admin' ? 'selected' : '' }}>
+                                                <i class="bi bi-person-gear me-2"></i>Sub Admin
+                                            </option>
+                                            <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>
+                                                <i class="bi bi-person-fill-gear me-2"></i>Admin
+                                            </option>
+                                        </select>
+                                        @error('role')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-text text-muted mt-1">
+                                        <small>Sub Admin dapat melihat data, Admin memiliki akses penuh</small>
+                                    </div>
+                                </div>
+
+                                <!-- Buttons -->
+                                <div class="d-flex justify-content-end gap-3 pt-4 border-top border-light">
+                                    <a href="{{ route('admin.user.index') }}" class="btn btn-outline-secondary btn-modern px-4">
+                                        <i class="bi bi-arrow-left me-2"></i>Batal
                                     </a>
+                                    <button type="submit" class="btn btn-primary btn-modern px-4">
+                                        <i class="bi bi-person-plus-fill me-2"></i>Buat Akun
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -420,6 +500,49 @@
             if (window.innerWidth > 768) {
                 document.getElementById('sidebar').classList.remove('show');
                 document.getElementById('mobileOverlay').classList.remove('show');
+            }
+        });
+
+        // Password toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Password toggle
+            const togglePassword = document.getElementById('togglePassword');
+            const passwordInput = document.getElementById('password');
+            const passwordIcon = document.getElementById('passwordIcon');
+
+            if (togglePassword && passwordInput && passwordIcon) {
+                togglePassword.addEventListener('click', function() {
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+
+                    if (type === 'password') {
+                        passwordIcon.classList.remove('bi-eye-slash');
+                        passwordIcon.classList.add('bi-eye');
+                    } else {
+                        passwordIcon.classList.remove('bi-eye');
+                        passwordIcon.classList.add('bi-eye-slash');
+                    }
+                });
+            }
+
+            // Confirm password toggle
+            const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+            const confirmPasswordInput = document.getElementById('password_confirmation');
+            const confirmPasswordIcon = document.getElementById('confirmPasswordIcon');
+
+            if (toggleConfirmPassword && confirmPasswordInput && confirmPasswordIcon) {
+                toggleConfirmPassword.addEventListener('click', function() {
+                    const type = confirmPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    confirmPasswordInput.setAttribute('type', type);
+
+                    if (type === 'password') {
+                        confirmPasswordIcon.classList.remove('bi-eye-slash');
+                        confirmPasswordIcon.classList.add('bi-eye');
+                    } else {
+                        confirmPasswordIcon.classList.remove('bi-eye');
+                        confirmPasswordIcon.classList.add('bi-eye-slash');
+                    }
+                });
             }
         });
     </script>

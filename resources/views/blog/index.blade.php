@@ -193,11 +193,7 @@
                                         <i class="bi bi-chevron-right me-1 small"></i>Kontak
                                     </a>
                                 </li>
-                                <li class="mb-2">
-                                    <a href="{{ route('login') }}" class="text-white text-decoration-none hover-primary">
-                                        <i class="bi bi-chevron-right me-1 small"></i>Login
-                                    </a>
-                                </li>
+                                <!-- Login removed - admin only access -->
                             </ul>
                         </div>
                     </div>
