@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="Travel Jogja - Login">
-    <meta name="keywords" content="travel jogja, login, wisata jogja">
+    <meta name="description" content="Travel Jogja - {{ request()->is('admin') ? 'Admin Login' : 'Login' }}">
+    <meta name="keywords" content="travel jogja, {{ request()->is('admin') ? 'admin login' : 'login' }}, wisata jogja">
 
-    <title>Travel Jogja - Masuk</title>
+    <title>Travel Jogja - {{ request()->is('admin') ? 'Admin Login' : 'Masuk' }}</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -127,8 +127,8 @@
                                         <i class="bi bi-compass text-white fs-3"></i>
                                     </div>
                                 </a>
-                                <h2 class="fw-bold text-dark mb-2">Masuk</h2>
-                                <p class="text-muted">Travel Jogja Professional</p>
+                                <h2 class="fw-bold text-dark mb-2">{{ request()->is('admin') ? 'Admin Login' : 'Masuk' }}</h2>
+                                <p class="text-muted">{{ request()->is('admin') ? 'Admin Panel Access' : 'Travel Jogja Professional' }}</p>
                             </div>
 
                             <!-- Session Status -->
@@ -138,7 +138,7 @@
                                 </div>
                             @endif
 
-                            <form method="POST" action="{{ route('login') }}">
+                            <form method="POST" action="{{ url()->current() }}">
                                 @csrf
 
                                 <!-- Email Address -->
@@ -186,7 +186,7 @@
 
                                 <div class="d-grid mb-4">
                                     <button type="submit" class="btn btn-primary btn-modern btn-lg">
-                                        <i class="bi bi-box-arrow-in-right me-2"></i>Masuk
+                                        <i class="bi bi-box-arrow-in-right me-2"></i>{{ request()->is('admin') ? 'Login Admin' : 'Masuk' }}
                                     </button>
                                 </div>
 
