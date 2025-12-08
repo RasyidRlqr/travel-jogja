@@ -28,8 +28,21 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        $user = auth()->user();
+
+        // Check if admin trying to login via public login
+        if ($user->isAdminLevel() && $request->is('login')) {
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            return redirect('/login')->withErrors([
+                'email' => 'Admin users must login via the admin portal.',
+            ]);
+        }
+
         // Redirect based on user role
-        if (auth()->user()->isAdminLevel()) {
+        if ($user->isAdminLevel()) {
             return redirect('/admin/dashboard');
         }
 

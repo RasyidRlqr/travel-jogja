@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 
 // Public Routes
@@ -22,6 +23,16 @@ Route::middleware('auth')->group(function () {
 });
 
 
+
+// Admin Login
+Route::get('/admin', function () {
+    if (auth()->check()) {
+        return redirect('/admin/dashboard');
+    }
+    return app(AuthenticatedSessionController::class)->create();
+})->name('admin.login');
+
+Route::post('/admin', [AuthenticatedSessionController::class, 'store']);
 
 // Admin Routes
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
