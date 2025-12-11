@@ -657,7 +657,7 @@
                             </div>
                         </div>
                         <h5 class="fw-bold mb-2">Telepon</h5>
-                        <p class="text-muted mb-0">+62 274 123456</p>
+                        <p class="text-muted mb-0">+62 {{ \App\Models\Setting::getValue('phone_number', '274123456') }}</p>
                         <small class="text-white-50">24/7 Support</small>
                     </div>
                 </div>
@@ -685,7 +685,7 @@
                             </div>
                         </div>
                         <h5 class="fw-bold mb-2">Email</h5>
-                        <p class="text-muted mb-0">info@traveljogja.com</p>
+                        <p class="text-muted mb-0">{{ \App\Models\Setting::getValue('email', 'info@traveljogja.com') }}</p>
                         <small class="text-white-50">Respon dalam 24 jam</small>
                     </div>
                 </div>
@@ -748,7 +748,7 @@
                         <i class="bi bi-envelope text-primary me-3 mt-1"></i>
                         <div>
                             <div class="fw-semibold">Email</div>
-                            <small class="text-white-50">info@traveljogja.com</small>
+                            <small class="text-white-50">{{ \App\Models\Setting::getValue('email', 'info@traveljogja.com') }}</small>
                         </div>
                     </div>
                     <div class="d-flex align-items-start">

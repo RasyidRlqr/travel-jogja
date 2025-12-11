@@ -136,14 +136,14 @@
                         <i class="bi bi-telephone text-primary me-3 mt-1"></i>
                         <div>
                             <div class="fw-semibold">Telepon</div>
-                            <small class="text-white-50">+62 274 123456</small>
+                            <small class="text-white-50">+62 {{ \App\Models\Setting::getValue('phone_number', '274123456') }}</small>
                         </div>
                     </div>
                     <div class="d-flex align-items-start mb-3">
                         <i class="bi bi-envelope text-primary me-3 mt-1"></i>
                         <div>
                             <div class="fw-semibold">Email</div>
-                            <small class="text-white-50">info@traveljogja.com</small>
+                            <small class="text-white-50">{{ \App\Models\Setting::getValue('email', 'info@traveljogja.com') }}</small>
                         </div>
                     </div>
                     <div class="d-flex align-items-start">

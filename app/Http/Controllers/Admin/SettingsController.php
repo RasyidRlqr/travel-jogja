@@ -16,6 +16,8 @@ class SettingsController extends Controller
 
         $settings = [
             'wa_number' => Setting::getValue('wa_number', ''),
+            'phone_number' => Setting::getValue('phone_number', ''),
+            'email' => Setting::getValue('email', ''),
         ];
 
         return view('admin.settings.index', compact('settings'));
@@ -28,10 +30,20 @@ class SettingsController extends Controller
         }
 
         $validated = $request->validate([
-            'wa_number' => 'required|string|max:20',
+            'wa_number' => 'nullable|string|min:9|max:20',
+            'phone_number' => 'nullable|string|max:20',
+            'email' => 'nullable|email|max:255',
         ]);
 
-        Setting::setValue('wa_number', $validated['wa_number']);
+        if ($request->filled('wa_number')) {
+            Setting::setValue('wa_number', $validated['wa_number']);
+        }
+        if ($request->filled('phone_number')) {
+            Setting::setValue('phone_number', $validated['phone_number']);
+        }
+        if ($request->filled('email')) {
+            Setting::setValue('email', $validated['email']);
+        }
 
         return redirect()->route('admin.settings.index')->with('success', 'Pengaturan berhasil diperbarui!');
     }
