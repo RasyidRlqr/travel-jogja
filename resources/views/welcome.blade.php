@@ -390,7 +390,7 @@
                                     <small class="badge bg-success-subtle text-success">Tersedia</small>
                                 </div>
                             </div>
-                            <a href="https://wa.me/6281234567890?text=Halo, saya ingin pesan paket Borobudur Adventure" class="btn btn-primary w-100 btn-modern text-decoration-none">
+                            <a href="https://wa.me/{{ \App\Models\Setting::getValue('wa_number', '6281234567890') }}?text=Halo, saya ingin pesan paket Borobudur Adventure" class="btn btn-primary w-100 btn-modern text-decoration-none">
                                 <i class="bi bi-cart-plus me-2"></i>Pesan Sekarang
                             </a>
                         </div>
@@ -423,7 +423,7 @@
                                     <small class="badge bg-success-subtle text-success">Tersedia</small>
                                 </div>
                             </div>
-                            <a href="https://wa.me/6281234567890?text=Halo, saya ingin pesan paket Prambanan Discovery" class="btn btn-primary w-100 btn-modern text-decoration-none">
+                            <a href="https://wa.me/{{ \App\Models\Setting::getValue('wa_number', '6281234567890') }}?text=Halo, saya ingin pesan paket Prambanan Discovery" class="btn btn-primary w-100 btn-modern text-decoration-none">
                                 <i class="bi bi-cart-plus me-2"></i>Pesan Sekarang
                             </a>
                         </div>
@@ -456,7 +456,7 @@
                                     <small class="badge bg-success-subtle text-success">Tersedia</small>
                                 </div>
                             </div>
-                            <a href="https://wa.me/6281234567890?text=Halo, saya ingin pesan paket Malioboro Experience" class="btn btn-primary w-100 btn-modern text-decoration-none">
+                            <a href="https://wa.me/{{ \App\Models\Setting::getValue('wa_number', '6281234567890') }}?text=Halo, saya ingin pesan paket Malioboro Experience" class="btn btn-primary w-100 btn-modern text-decoration-none">
                                 <i class="bi bi-cart-plus me-2"></i>Pesan Sekarang
                             </a>
                         </div>
@@ -671,7 +671,7 @@
                             </div>
                         </div>
                         <h5 class="fw-bold mb-2">WhatsApp</h5>
-                        <p class="text-muted mb-0">+62 812 3456 7890</p>
+                        <p class="text-muted mb-0">+62 {{ \App\Models\Setting::getValue('wa_number', '81234567890') }}</p>
                         <small class="text-white-50">Respon Cepat</small>
                     </div>
                 </div>
@@ -722,7 +722,7 @@
                         <a href="https://x.com/travel-jogja" class="text-white fs-5 hover-primary">
                             <i class="bi bi-twitter"></i>
                         </a>
-                        <a href="https://wa.me/62812345678?text=halo+ka" class="text-white fs-5 hover-primary">
+                        <a href="https://wa.me/{{ \App\Models\Setting::getValue('wa_number', '62812345678') }}?text=halo+ka" class="text-white fs-5 hover-primary">
                             <i class="bi bi-whatsapp"></i>
                         </a>
                     </div>

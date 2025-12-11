@@ -237,7 +237,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="{{ route('admin.gallery.index') }}">
+                <a class="nav-link" href="{{ route('admin.gallery.index') }}">
                     <i class="bi bi-images"></i>
                     <span>Galeri</span>
                 </a>
@@ -249,7 +249,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.settings.index') }}">
+                <a class="nav-link active" href="{{ route('admin.settings.index') }}">
                     <i class="bi bi-gear"></i>
                     <span>Pengaturan</span>
                 </a>
@@ -310,14 +310,14 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h1 class="h2 mb-0">Kelola Galeri</h1>
-                            <p class="mb-0 opacity-75">Kelola konten dan data website Travel Jogja</p>
+                            <h1 class="h2 mb-0">Pengaturan Umum</h1>
+                            <p class="mb-0 opacity-75">Kelola pengaturan website Travel Jogja</p>
                         </div>
                         <div class="col-auto">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0 bg-transparent p-0">
                                     <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-white">Dashboard</a></li>
-                                    <li class="breadcrumb-item active text-white-50" aria-current="page">Kelola Galeri</li>
+                                    <li class="breadcrumb-item active text-white-50" aria-current="page">Pengaturan</li>
                                 </ol>
                             </nav>
                         </div>
@@ -341,56 +341,38 @@
                 </div>
             @endif
 
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="h4 mb-0">Daftar Galeri</h2>
-                <a href="{{ route('admin.gallery.create') }}" class="btn btn-primary">
-                    <i class="bi bi-plus-circle me-2"></i>Tambah Galeri
-                </a>
-            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-white">
+                            <h5 class="card-title mb-0">Pengaturan Kontak</h5>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" action="{{ route('admin.settings.update') }}">
+                                @csrf
+                                @method('PUT')
 
-            <div class="row g-4">
-                @forelse($galleries as $gallery)
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card border-0 shadow-sm h-100">
-                            <div class="position-relative">
-                                <img src="{{ $gallery->image_source }}" class="card-img-top" alt="{{ $gallery->title }}" style="height: 200px; object-fit: cover;">
-                                <div class="position-absolute top-0 end-0 p-2">
-                                    <form method="POST" action="{{ route('admin.gallery.destroy', $gallery) }}" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus gambar ini?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-                                    </form>
+                                <div class="mb-3">
+                                    <label for="wa_number" class="form-label">Nomor WhatsApp <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control @error('wa_number') is-invalid @enderror" id="wa_number" name="wa_number" value="{{ old('wa_number', $settings['wa_number']) }}" placeholder="628xxxxxxxxx" required>
+                                    @error('wa_number')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                    <div class="form-text">
+                                        Masukkan nomor WhatsApp tanpa spasi atau tanda +, contoh: 6281234567890
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card-body">
-                                <h6 class="card-title mb-2">{{ $gallery->title }}</h6>
-                                @if($gallery->description)
-                                    <p class="card-text text-muted small mb-2">{{ Str::limit($gallery->description, 100) }}</p>
-                                @endif
-                                <small class="text-muted">{{ $gallery->created_at->format('d M Y') }}</small>
-                            </div>
-                        </div>
-                    </div>
-                @empty
-                    <div class="col-12">
-                        <div class="text-center py-5">
-                            <div class="text-muted">
-                                <i class="bi bi-images display-4 mb-3"></i>
-                                <p>Belum ada gambar di galeri</p>
-                                <a href="{{ route('admin.gallery.create') }}" class="btn btn-primary">Tambah Gambar Pertama</a>
-                            </div>
-                        </div>
-                    </div>
-                @endforelse
-            </div>
 
-            @if($galleries->hasPages())
-                <div class="d-flex justify-content-center mt-4">
-                    {{ $galleries->links() }}
+                                <div class="d-flex gap-2">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="bi bi-check-circle me-2"></i>Simpan Pengaturan
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            @endif
+            </div>
         </div>
     </main>
 

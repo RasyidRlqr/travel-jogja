@@ -65,7 +65,7 @@
                                 </div>
                             </div>
                             <div class="card-footer bg-white border-0">
-                                <a href="https://wa.me/6281234567890?text=Halo, saya ingin pesan paket {{ urlencode($tour->title) }}" class="btn btn-primary w-100 text-decoration-none" target="_blank">Pesan Sekarang</a>
+                                <a href="https://wa.me/{{ \App\Models\Setting::getValue('wa_number', '6281234567890') }}?text=Halo, saya ingin pesan paket {{ urlencode($tour->title) }}" class="btn btn-primary w-100 text-decoration-none" target="_blank">Pesan Sekarang</a>
                             </div>
                         </div>
                     </div>

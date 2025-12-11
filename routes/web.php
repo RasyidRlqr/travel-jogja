@@ -49,6 +49,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
     // Gallery Management
     Route::resource('gallery', App\Http\Controllers\Admin\GalleryController::class);
+
+    // Settings Management
+    Route::get('settings', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('settings.index');
+    Route::put('settings', [App\Http\Controllers\Admin\SettingsController::class, 'update'])->name('settings.update');
 });
 
 require __DIR__.'/auth.php';
