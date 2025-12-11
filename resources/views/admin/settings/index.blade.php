@@ -353,20 +353,45 @@
                                 @method('PUT')
 
                                 <div class="mb-3">
-                                    <label for="wa_number" class="form-label">Nomor WhatsApp <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control @error('wa_number') is-invalid @enderror" id="wa_number" name="wa_number" value="{{ old('wa_number', $settings['wa_number']) }}" placeholder="628xxxxxxxxx" required>
+                                    <label for="wa_number" class="form-label">Nomor WhatsApp</label>
+                                    <input type="text" class="form-control @error('wa_number') is-invalid @enderror" id="wa_number" name="wa_number" value="{{ old('wa_number', $settings['wa_number']) }}" placeholder="8xxxxxxxxx">
                                     @error('wa_number')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                     <div class="form-text">
-                                        Masukkan nomor WhatsApp tanpa spasi atau tanda +, contoh: 6281234567890
+                                        Masukkan nomor WhatsApp tanpa spasi atau tanda +, minimal 9 digit,tanpa 62 contoh: 81234567890
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="phone_number" class="form-label">Nomor Telepon</label>
+                                    <input type="text" class="form-control @error('phone_number') is-invalid @enderror" id="phone_number" name="phone_number" value="{{ old('phone_number', $settings['phone_number']) }}" placeholder="0274123456">
+                                    @error('phone_number')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                    <div class="form-text">
+                                        Masukkan nomor telepon kantor, contoh: 0274123456
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email', $settings['email']) }}" placeholder="info@traveljogja.com">
+                                    @error('email')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                    <div class="form-text">
+                                        Masukkan alamat email kontak, contoh: info@traveljogja.com
                                     </div>
                                 </div>
 
                                 <div class="d-flex gap-2">
                                     <button type="submit" class="btn btn-primary">
-                                        <i class="bi bi-check-circle me-2"></i>Simpan Pengaturan
+                                        <i class="bi bi-check-circle me-2"></i>Update Pengaturan
                                     </button>
+                                </div>
+                                <div class="form-text text-muted mt-2">
+                                    <small>Anda dapat mengupdate satu atau beberapa field saja sesuai kebutuhan.</small>
                                 </div>
                             </form>
                         </div>
