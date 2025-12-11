@@ -11,6 +11,7 @@ Website wisata Yogyakarta yang dibangun dengan Laravel 11. Platform lengkap untu
 - **Paket Wisata**: Sistem manajemen paket wisata lengkap
 - **Galeri Foto**: Koleksi foto destinasi wisata
 - **Blog System**: Sistem artikel/blog terintegrasi
+- **Pengaturan Kontak Dinamis**: Sistem manajemen nomor WhatsApp, telepon, dan email secara dinamis
 - **Responsive Design**: Kompatibel dengan semua perangkat
 
 ## 🛠️ Tech Stack
@@ -88,55 +89,6 @@ Website wisata Yogyakarta yang dibangun dengan Laravel 11. Platform lengkap untu
 - Dapat mengelola blog, layanan, paket wisata, galeri
 - Tidak dapat mengelola user
 
-### User
-- Akses ke website publik
-- Dapat melihat semua konten
-
-## 📁 Struktur Project
-
-```
-travel-jogja/
-├── app/
-│   ├── Http/Controllers/
-│   │   ├── Admin/          # Controller admin
-│   │   └── Auth/           # Controller autentikasi
-│   ├── Models/             # Model Eloquent
-│   └── Middleware/         # Custom middleware
-├── database/
-│   ├── migrations/         # Database migrations
-│   └── seeders/            # Database seeders
-├── public/                 # Assets publik
-├── resources/
-│   ├── css/               # Custom CSS
-│   ├── js/                # JavaScript
-│   └── views/             # Blade templates
-├── routes/
-│   └── web.php            # Route definitions
-└── .env.example           # Environment template
-```
-
-## 🔧 Konfigurasi
-
-### Environment Variables
-```env
-APP_NAME=Travel Jogja
-APP_ENV=local
-APP_KEY=base64_key
-APP_DEBUG=true
-APP_URL=http://localhost
-
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=travel_jogja
-DB_USERNAME=root
-DB_PASSWORD=
-
-MAIL_MAILER=log
-```
-
-### Ngrok Support
-Aplikasi ini mendukung tunneling dengan Ngrok. Pastikan untuk mengupdate `APP_URL` di `.env` dengan URL Ngrok saat menggunakan tunneling (beta).
 
 ## 📚 API Routes
 
@@ -154,19 +106,8 @@ Aplikasi ini mendukung tunneling dengan Ngrok. Pastikan untuk mengupdate `APP_UR
 - `GET /admin/service` - Service management
 - `GET /admin/tour` - Tour management
 - `GET /admin/gallery` - Gallery management
-
-## 🎨 Customization
-
-### Styling
-- Edit `resources/css/app.css` untuk custom styles
-- Gunakan Bootstrap classes untuk konsistensi
-
-### Views
-- Blade templates di `resources/views/`
-- Layout utama: `layouts/app.blade.php` dan `layouts/navigation.blade.php`
-
-### Components
-- Reusable components di `resources/views/components/`
+- `GET /admin/settings` - Settings management
+- `PUT /admin/settings` - Update settings
 
 ## 🧪 Testing
 
