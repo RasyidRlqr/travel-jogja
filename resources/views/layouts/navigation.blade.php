@@ -111,6 +111,7 @@
     </div>
 </nav>
 
+
 <script>
     // Function to set active nav link based on current section
     function setActiveNavLink() {
@@ -151,4 +152,5 @@
             setTimeout(setActiveNavLink, 100); // Small delay to allow hash to update
         });
     });
+
 </script>
