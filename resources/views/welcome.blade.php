@@ -51,6 +51,13 @@
         .hero-content {
             position: relative;
             z-index: 3;
+            padding-top: 80px; /* Space for navbar so badge doesn't get covered */
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                padding-top: 70px; /* Slightly less space on mobile */
+            }
         }
 
         .floating-card {
