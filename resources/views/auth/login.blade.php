@@ -117,7 +117,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 col-md-8 mx-auto">
+                <div class="col-lg-6 col-md-8 mx-auto mt-5">
                     <div class="auth-content">
                         <div class="glass-card p-5 shadow-lg">
                             <div class="text-center mb-4">
